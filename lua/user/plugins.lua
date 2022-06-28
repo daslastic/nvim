@@ -44,21 +44,26 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+	use("kyazdani42/nvim-web-devicons")
 
 	-- telescope
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-media-files.nvim")
 
-	--lua line
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
+	-- lsp
+  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+
+	-- lualine
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
 
 	use("akinsho/toggleterm.nvim")
 
 	-- colorschemes
-	use("lunarvim/colorschemes")
+	use("ellisonleao/gruvbox.nvim")
+	--use("sts10/vim-pink-moon")
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
