@@ -1,6 +1,6 @@
 local status_ok, toggleterm = pcall(require, "toggleterm")
 if not status_ok then
-	return
+  return
 end
 
 toggleterm.setup {
@@ -26,11 +26,11 @@ toggleterm.setup {
   -- the 'curved' border is a custom border type
   -- not natively supported but implemented in this plugin.
   -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
-	  border = 'curved',
-	winblend = 0,
-	highlights = {
-	  border = "Normal",
-	  background = "Normal",
-	},
+  border = 'curved',
+    winblend = 0,
+    highlights = {
+      border = "Normal",
+      background = "Normal",
+    },
   }
 }

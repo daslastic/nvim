@@ -23,6 +23,15 @@ local check_backspace = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
+local icons = require "user.icons"
+local kind_icons = icons.kind
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
+vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
+
+require("luasnip/loaders/from_vscode").lazy_load()
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -87,6 +96,8 @@ cmp.setup {
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
+      vim_item.kind = kind_icons[vim_item.kind]
+
       if entry.source.name == "emoji" then
         vim_item.kind = icons.misc.Smiley
         vim_item.kind_hl_group = "CmpItemKindEmoji"
@@ -110,11 +121,11 @@ cmp.setup {
   },
   window = {
     documentation = {
-      border = "rounded",
+      border = "none",
       winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
     },
     completion = {
-      border = "rounded",
+      border = "none",
       winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
     },
   },

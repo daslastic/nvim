@@ -4,12 +4,12 @@ local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system({
-	"git",
-	"clone",
-	"--depth",
-	"1",
-	"https://github.com/wbthomason/packer.nvim",
-	install_path,
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
   })
   print("Installing packer close and reopen Neovim...")
   vim.cmd([[packadd packer.nvim]])
@@ -32,9 +32,9 @@ end
 -- Have packer use a popup window
 packer.init({
   display = {
-	open_fn = function()
-	  return require("packer.util").float({ border = "none" })
-	end,
+    open_fn = function()
+      return require("packer.util").float({ border = "none" })
+    end,
   },
 })
 
@@ -45,6 +45,8 @@ return packer.startup(function(use)
   use("nvim-lua/popup.nvim")
   use("nvim-lua/plenary.nvim")
   use("kyazdani42/nvim-web-devicons")
+  -- files
+  use("tamago324/lir.nvim")
 
   -- telescope
   use("nvim-telescope/telescope.nvim")
@@ -53,7 +55,17 @@ return packer.startup(function(use)
   -- lsp
   use('neovim/nvim-lspconfig')
   use('nvim-treesitter/nvim-treesitter')
+  use("jose-elias-alvarez/null-ls.nvim")
   use('nix-community/rnix-lsp')
+  use('ray-x/lsp_signature.nvim')
+  use('RRethy/vim-illuminate')
+  use('windwp/nvim-ts-autotag')
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
 
   -- cmp
   use("hrsh7th/nvim-cmp")
@@ -62,16 +74,17 @@ return packer.startup(function(use)
   use("hrsh7th/cmp-emoji")
   use("hrsh7th/cmp-buffer") -- buffer completions
   use("hrsh7th/cmp-path") -- path completions
+  use("hrsh7th/cmp-cmdline")
+
+  -- speed lol
+  use('lewis6991/impatient.nvim')
 
   -- snip
   use("L3MON4D3/LuaSnip")
+  use("rafamadriz/friendly-snippets")
 
-  -- lualine
-  use {
-	'nvim-lualine/lualine.nvim',
-	requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-
+  -- other
+  use('nvim-lualine/lualine.nvim')
   use("akinsho/toggleterm.nvim")
 
   -- colorschemes
@@ -79,6 +92,6 @@ return packer.startup(function(use)
 
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
-	require("packer").sync()
+    require("packer").sync()
   end
 end)
