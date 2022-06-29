@@ -10,9 +10,11 @@ local actions = require "telescope.actions"
 telescope.setup {
   defaults = {
 
-    prompt_prefix = " ",
-    selection_caret = " ",
+    prompt_prefix = " ",
+    selection_caret = " ",
     path_display = { "smart" },
+
+		file_ignore_patterns = { ".git/", "node_modules/", "target/", "docs/", ".settings/" },
 
     mappings = {
       i = {
@@ -83,8 +85,8 @@ telescope.setup {
   },
   extensions = {
     media_files = {
-        filetypes = {"png", "webp", "jpg", "jpeg", "webm", "pdf", "mp4" },
-        find_cmd = "rg" -- find command (defaults to `fd`)
-      }
+			filetypes = {"png", "webp", "jpg", "jpeg", "webm", "pdf", "mp4" },
+			find_cmd = "rg" -- find command (defaults to `fd`)
+		}
   },
 }

@@ -41,9 +41,9 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
 	-- very cool plugins
-	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+	use("wbthomason/packer.nvim")
+	use("nvim-lua/popup.nvim")
+	use("nvim-lua/plenary.nvim")
 	use("kyazdani42/nvim-web-devicons")
 
 	-- telescope
@@ -51,7 +51,17 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope-media-files.nvim")
 
 	-- lsp
-  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+  use('neovim/nvim-lspconfig')
+	use('nvim-treesitter/nvim-treesitter')
+	-- cmp
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-nvim-lua")
+	use("hrsh7th/cmp-emoji")
+	use("hrsh7th/cmp-buffer") -- buffer completions
+  use("hrsh7th/cmp-path") -- path completions
+	-- snip
+	use("L3MON4D3/LuaSnip")
 
 	-- lualine
 	use {
@@ -63,7 +73,6 @@ return packer.startup(function(use)
 
 	-- colorschemes
 	use("ellisonleao/gruvbox.nvim")
-	--use("sts10/vim-pink-moon")
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

@@ -1,5 +1,10 @@
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local cmp_status_ok, lspconfig = pcall(require, "lspconfig")
+if not cmp_status_ok then
+  return
+end
+
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -36,15 +41,15 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
-require('lspconfig')['pyright'].setup{
+lspconfig.pyright.setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
-require('lspconfig')['tsserver'].setup{
+lspconfig.tsserver.setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
-require('lspconfig')['rust_analyzer'].setup{
+lspconfig.rust_analyzer.setup{
     on_attach = on_attach,
     flags = lsp_flags,
     -- Server-specific settings...
@@ -52,3 +57,4 @@ require('lspconfig')['rust_analyzer'].setup{
       ["rust-analyzer"] = {}
     }
 }
+lspconfig.rnix.setup{}
