@@ -13,8 +13,7 @@ telescope.setup {
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
-
-		file_ignore_patterns = { ".git/", "node_modules/", "target/", "docs/", ".settings/" },
+	file_ignore_patterns = { ".git/", "node_modules/", "target/", "docs/", ".settings/" },
 
     mappings = {
       i = {
@@ -84,9 +83,9 @@ telescope.setup {
   pickers = {
   },
   extensions = {
-    media_files = {
-			filetypes = {"png", "webp", "jpg", "jpeg", "webm", "pdf", "mp4" },
-			find_cmd = "rg" -- find command (defaults to `fd`)
-		}
+	media_files = {
+	  filetypes = {"png", "webp", "jpg", "jpeg", "webm", "pdf", "mp4" },
+	  find_cmd = "rg" -- find command (defaults to `fd`)
+	}
   },
 }
