@@ -108,7 +108,7 @@ cmp.setup {
         nvim_lsp = "",
         nvim_lua = "",
         luasnip = "",
-				buffer = "",
+	buffer = "",
         path = "",
         emoji = "",
       })[entry.source.name]

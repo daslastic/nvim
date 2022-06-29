@@ -86,6 +86,7 @@ return packer.startup(function(use)
   -- other
   use('nvim-lualine/lualine.nvim')
   use("akinsho/toggleterm.nvim")
+  use("folke/todo-comments.nvim")
 
   -- colorschemes
   use("ellisonleao/gruvbox.nvim")

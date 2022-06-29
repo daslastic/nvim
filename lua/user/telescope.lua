@@ -83,9 +83,9 @@ telescope.setup {
   pickers = {
   },
   extensions = {
-	media_files = {
-	  filetypes = {"png", "webp", "jpg", "jpeg", "webm", "pdf", "mp4" },
-	  find_cmd = "rg" -- find command (defaults to `fd`)
-	}
+    media_files = {
+      filetypes = {"png", "webp", "jpg", "jpeg", "webm", "pdf", "mp4" },
+      find_cmd = "fd" -- find command (defaults to `fd`)
+    }
   },
 }
