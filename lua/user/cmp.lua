@@ -8,15 +8,19 @@ if not snip_status_ok then
   return
 end
 
-local cmp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not cmp_status_ok then
+local tabnine_status_ok, tabnine = pcall(require, "user.tabnine")
+if not tabnine_status_ok then
   return
 end
 
-local cmp_status_ok, lspconfig = pcall(require, "lspconfig")
-if not cmp_status_ok then
-  return
-end
+tabnine.setup()
+
+require("luasnip/loaders/from_vscode").lazy_load()
+
+-- local check_backspace = function()
+--   local col = vim.fn.col "." - 1
+--   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+-- end
 
 local check_backspace = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -24,13 +28,11 @@ local check_backspace = function()
 end
 
 local icons = require "user.icons"
+
 local kind_icons = icons.kind
 
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
 vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
-
-require("luasnip/loaders/from_vscode").lazy_load()
 
 cmp.setup {
   snippet = {
@@ -38,14 +40,7 @@ cmp.setup {
       luasnip.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "nvim_lua" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "path" },
-    { name = "emoji" },
-  },
+
   mapping = cmp.mapping.preset.insert {
     ["<C-k>"] = cmp.mapping.select_prev_item(),
     ["<C-j>"] = cmp.mapping.select_next_item(),
@@ -96,7 +91,13 @@ cmp.setup {
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
+      -- Kind icons
       vim_item.kind = kind_icons[vim_item.kind]
+
+      if entry.source.name == "cmp_tabnine" then
+        vim_item.kind = icons.misc.Robot
+        vim_item.kind_hl_group = "CmpItemKindTabnine"
+      end
 
       if entry.source.name == "emoji" then
         vim_item.kind = icons.misc.Smiley
@@ -108,12 +109,22 @@ cmp.setup {
         nvim_lsp = "",
         nvim_lua = "",
         luasnip = "",
-	buffer = "",
+        buffer = "",
         path = "",
         emoji = "",
       })[entry.source.name]
       return vim_item
     end,
+  },
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "nvim_lua" },
+    { name = "luasnip" },
+    { name = "crates" },
+    { name = "buffer" },
+    { name = "cmp_tabnine" },
+    { name = "path" },
+    { name = "emoji" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
@@ -132,16 +143,4 @@ cmp.setup {
   experimental = {
     ghost_text = true,
   },
-}
-
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-
--- The following example advertise capabilities to `clangd`.
-lspconfig.clangd.setup {
-  capabilities = capabilities,
-}
-lspconfig.rust_analyzer.setup {
-  capabilities = capabilities,
 }

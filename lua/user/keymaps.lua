@@ -45,8 +45,8 @@ keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap("v", "h", "<gv", opts)
+keymap("v", "l", ">gv", opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
@@ -61,7 +61,9 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- telescope --
-keymap("n", "<leader>f", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
+keymap("n", "<leader>s", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 
 -- file explorer --
-keymap("n", "s", ":lua require'lir.float'.toggle()<cr>", opts)
+keymap("n", "<leader>w", ":lua require'lir.float'.toggle()<cr>", opts)
+-- format --
+keymap("n", "<leader>f", ":lua vim.lsp.buf.formatting()<cr>", opts)

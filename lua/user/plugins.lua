@@ -54,6 +54,7 @@ return packer.startup(function(use)
 
   -- lsp
   use('neovim/nvim-lspconfig')
+  use("williamboman/nvim-lsp-installer")
   use('nvim-treesitter/nvim-treesitter')
   use("jose-elias-alvarez/null-ls.nvim")
   use('nix-community/rnix-lsp')
@@ -68,13 +69,28 @@ return packer.startup(function(use)
   }
 
   -- cmp
-  use("hrsh7th/nvim-cmp")
-  use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-nvim-lua")
-  use("hrsh7th/cmp-emoji")
-  use("hrsh7th/cmp-buffer") -- buffer completions
-  use("hrsh7th/cmp-path") -- path completions
-  use("hrsh7th/cmp-cmdline")
+  use { "hrsh7th/nvim-cmp" }
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-emoji"
+  use "hrsh7th/cmp-nvim-lua"
+  use {
+    "tzachar/cmp-tabnine",
+    run = "./install.sh",
+    requires = "hrsh7th/nvim-cmp",
+  }
+  use "simrat39/rust-tools.nvim"
+  use {
+    'saecki/crates.nvim',
+    tag = 'v0.2.1',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+        require('crates').setup()
+    end,
+  }
 
   -- speed lol
   use('lewis6991/impatient.nvim')
@@ -87,6 +103,8 @@ return packer.startup(function(use)
   use('nvim-lualine/lualine.nvim')
   use("akinsho/toggleterm.nvim")
   use("folke/todo-comments.nvim")
+  -- tools
+  use('mfussenegger/nvim-dap')
 
   -- colorschemes
   use("ellisonleao/gruvbox.nvim")
