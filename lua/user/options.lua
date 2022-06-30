@@ -10,20 +10,20 @@ local options = {
 	mouse = "a",
 	pumheight = 10,
 	showmode = false,
-	showtabline = 2,
+	showtabline = 4,
 	smartcase = true,
 	smartindent = true,
 	splitbelow = true,
 	splitright = true,
 	swapfile = false,
-	termguicolors = false,
+	termguicolors = true,
 	timeoutlen = 1000,
 	undofile = true,
 	updatetime = 300,
 	writebackup = false,
 	--expandtab = false,
 	shiftwidth = 2,
-	tabstop = 2,
+	tabstop = 4,
 	cursorline = true,
 	number = true,
 	relativenumber = false,
@@ -32,8 +32,10 @@ local options = {
 	wrap = true,
 	scrolloff = 8,
 	sidescrolloff = 8,
+	listchars = "tab:┊⠀,trail:·,extends:»,precedes:«,nbsp:×",
 }
 
+vim.cmd("set list ")
 vim.opt.shortmess:append("c")
 
 for k, v in pairs(options) do
