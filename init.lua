@@ -1,14 +1,14 @@
-require "user.impatient"
-require "user.icons"
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.colorscheme"
-require "user.telescope"
-require "user.lualine"
-require "user.toggleterm"
-require "user.lsp"
-require "user.treesitter"
-require "user.cmp"
-require "user.lir"
-require "user.todo"
+require("user.impatient")
+require("user.icons")
+require("user.options")
+require("user.keymaps")
+require("user.plugins")
+require("user.colorscheme")
+require("user.telescope")
+require("user.lualine")
+require("user.toggleterm")
+require("user.lsp")
+require("user.treesitter")
+require("user.cmp")
+require("user.lir")
+require("user.todo")
