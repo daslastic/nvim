@@ -100,6 +100,10 @@ cmp.setup({
 				vim_item.kind = icons.misc.Robot
 				vim_item.kind_hl_group = "CmpItemKindTabnine"
 			end
+			if entry.source.name == "copilot" then
+				vim_item.kind = icons.git.Octoface
+				vim_item.kind_hl_group = "CmpItemKindCopilot"
+			end
 
 			if entry.source.name == "emoji" then
 				vim_item.kind = icons.misc.Smiley
@@ -128,6 +132,7 @@ cmp.setup({
 		{ name = "nvim_lsp", group_index = 2 },
 		{ name = "nvim_lua", group_index = 2 },
 		{ name = "copilot", group_index = 2 },
+		{ name = "rnix", group_index = 2 },
 		{ name = "luasnip", group_index = 2 },
 		{ name = "buffer", group_index = 2 },
 		{ name = "cmp_tabnine", group_index = 2 },

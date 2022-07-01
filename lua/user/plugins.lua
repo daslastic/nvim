@@ -67,6 +67,24 @@ return packer.startup(function(use)
 			require("Comment").setup()
 		end,
 	})
+	use("b0o/SchemaStore.nvim")
+	use({
+		"folke/trouble.nvim",
+		cmd = "TroubleToggle",
+	})
+	use {
+	  "zbirenbaum/copilot.lua",
+	  event = { "VimEnter" },
+	  config = function()
+		vim.defer_fn(function()
+		  require "user.copilot"
+		end, 100)
+	  end,
+	}
+	use {
+	  "zbirenbaum/copilot-cmp",
+	  module = "copilot_cmp",
+	}
 
 	-- cmp
 	use({ "hrsh7th/nvim-cmp" })

@@ -19,7 +19,6 @@ local servers = {
 	"bashls",
 	"clangd",
 	"rust_analyzer",
-	"rnix",
 	-- "taplo",
 }
 
@@ -60,11 +59,11 @@ for _, server in pairs(servers) do
 	--   local jsonls_opts = require "user.lsp.settings.jsonls"
 	--   opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
 	-- end
-	--
-	-- if server == "yamlls" then
-	--   local yamlls_opts = require "user.lsp.settings.yamlls"
-	--   opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
-	-- end
+
+	if server == "yamlls" then
+		local yamlls_opts = require("user.lsp.settings.yamlls")
+		opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
+	end
 
 	if server == "sumneko_lua" then
 		local sumneko_opts = require("user.lsp.settings.sumneko_lua")
@@ -86,13 +85,19 @@ for _, server in pairs(servers) do
 		opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
 	end
 
-	if server == "jdtls" then
-		goto continue
-	end
+	-- if server == "jdtls" then
+	--   goto continue
+	-- end
 
 	if server == "rust_analyzer" then
 		local rust_opts = require("user.lsp.settings.rust")
-		require("rust-tools").setup(rust_opts)
+
+		local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
+		if not rust_tools_status_ok then
+			return
+		end
+
+		rust_tools.setup(rust_opts)
 		goto continue
 	end
 
