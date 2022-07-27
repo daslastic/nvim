@@ -1,6 +1,5 @@
--- vim.g.gruvbox_contrast_dark = 'hard'
-vim.opt.background = "dark"
-local colorscheme = "gruvbox"
+local colorscheme = "ayu"
+-- local colorscheme = "modus-vivendi"
 
 -- vim.g.transparent_background = true
 vim.g.italic_comments = true

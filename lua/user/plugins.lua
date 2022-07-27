@@ -57,7 +57,6 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer")
 	use("nvim-treesitter/nvim-treesitter")
 	use("jose-elias-alvarez/null-ls.nvim")
-	use("nix-community/rnix-lsp")
 	use("ray-x/lsp_signature.nvim")
 	use("RRethy/vim-illuminate")
 	use("windwp/nvim-ts-autotag")
@@ -72,19 +71,6 @@ return packer.startup(function(use)
 		"folke/trouble.nvim",
 		cmd = "TroubleToggle",
 	})
-	use({
-		"zbirenbaum/copilot.lua",
-		event = { "VimEnter" },
-		config = function()
-			vim.defer_fn(function()
-				require("user.copilot")
-			end, 100)
-		end,
-	})
-	use({
-		"zbirenbaum/copilot-cmp",
-		module = "copilot_cmp",
-	})
 
 	-- cmp
 	use({ "hrsh7th/nvim-cmp" })
@@ -95,11 +81,6 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-emoji")
 	use("hrsh7th/cmp-nvim-lua")
-	use({
-		"tzachar/cmp-tabnine",
-		run = "./install.sh",
-		requires = "hrsh7th/nvim-cmp",
-	})
 	use("simrat39/rust-tools.nvim")
 	use({
 		"saecki/crates.nvim",
@@ -125,7 +106,8 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap")
 
 	-- colorschemes
-	use("ellisonleao/gruvbox.nvim")
+	use("Shatur/neovim-ayu")
+	use("ishan9299/modus-theme-vim")
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
