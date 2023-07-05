@@ -38,8 +38,8 @@ return require("packer").startup(function(use)
 	use("tamton-aquib/duck.nvim")
 
 	use("m4xshen/hardtime.nvim")
-	use("tenxsoydev/tabs-vs-spaces.nvim")
 	use("ThePrimeagen/vim-be-good")
+	use("psliwka/vim-smoothie")
 
 	-- lsp
 	use({
