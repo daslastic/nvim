@@ -4,12 +4,14 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/plenary.nvim")
 
+	-- treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		{ run = ":TSUpdate" },
 	})
+	use("nvim-treesitter/nvim-treesitter-context")
+	use("nvim-treesitter/nvim-treesitter-textobjects")
 
-	-- treesitter
 	use("windwp/nvim-ts-autotag")
 	use({
 		"windwp/nvim-autopairs",
@@ -20,9 +22,12 @@ return require("packer").startup(function(use)
 	use("numToStr/Comment.nvim")
 
 	-- editor
+	use("andymass/vim-matchup")
 	use("mbbill/undotree")
 	use("folke/todo-comments.nvim")
 	use("lewis6991/gitsigns.nvim")
+	use("RRethy/vim-illuminate")
+	use("norcalli/nvim-colorizer.lua")
 
 	-- editor sessions
 	use("rmagatti/auto-session")
@@ -33,6 +38,7 @@ return require("packer").startup(function(use)
 	use("ellisonleao/gruvbox.nvim")
 	use("folke/zen-mode.nvim")
 	use("nvim-lualine/lualine.nvim")
+	use({ "j-hui/fidget.nvim", tag = "legacy" })
 
 	-- dumb fun
 	use("tamton-aquib/duck.nvim")
@@ -58,10 +64,7 @@ return require("packer").startup(function(use)
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lsp" },
-			{
-				"L3MON4D3/LuaSnip",
-				dependencies = { "rafamadriz/friendly-snippets" },
-			},
+			{ "L3MON4D3/LuaSnip" },
 
 			-- Pictograms
 			{ "onsails/lspkind.nvim" },
@@ -71,10 +74,17 @@ return require("packer").startup(function(use)
 		},
 	})
 
+	use("lvimuser/lsp-inlayhints.nvim")
 	use("rafamadriz/friendly-snippets")
 	use("saadparwaiz1/cmp_luasnip")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("mfussenegger/nvim-jdtls")
+
+	use({
+		"saecki/crates.nvim",
+		tag = "v0.3.0",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	})
 
 	-- TODO: DAP ME
 end)

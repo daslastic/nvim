@@ -20,3 +20,18 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>ff", ":lua vim.lsp.buf.format({ async = false })<cr>")
 vim.keymap.set("n", "<leader>fj", ":lua vim.diagnostic.goto_next()<cr>")
 vim.keymap.set("n", "<leader>fk", ":lua vim.diagnostic.goto_prev()<cr>")
+
+vim.keymap.set("n", "<C-Up>", ":resize -2<CR>")
+vim.keymap.set("n", "<C-Down>", ":resize +2<CR>")
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
+
+-- visual move tab, hl
+vim.keymap.set("v", "<S-h>", "<gv")
+vim.keymap.set("v", "<S-l>", ">gv")
+
+-- ctrl swap
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
