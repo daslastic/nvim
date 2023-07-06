@@ -4,8 +4,6 @@ local lsp = require("lsp-zero").preset({
 	},
 })
 
-local lspkind = require("lspkind")
-
 lsp.on_attach(function(client, bufnr)
 	lsp.default_keymaps({ buffer = bufnr })
 end)
@@ -39,10 +37,22 @@ lsp.ensure_installed({
 	"cssmodules_ls", --
 })
 
-lsp.setup()
+lsp.set_sign_icons({
+	error = " ",
+	warn = " ",
+	hint = "󰞂",
+	info = "",
+})
 
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
+	require("lsp_signature").on_attach({
+		bind = true,
+		floating_window_above_cur_line = true,
+		handler_opts = {
+			border = "rounded",
+		},
+	}, bufnr)
 
 	vim.keymap.set("n", "gd", function()
 		vim.lsp.buf.definition()
@@ -53,7 +63,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>as", function()
 		vim.lsp.buf.workspace_symbol()
 	end, opts)
-	vim.keymap.set("n", "<leader>ad", function()
+	vim.keymap.set("n", "gl", function()
 		vim.diagnostic.open_float()
 	end, opts)
 	vim.keymap.set("n", "[d", function()
@@ -91,14 +101,14 @@ cmp.setup({
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
 		--    ['<Up>'] = cmp.mapping.select_prev_item(cmp_select_opts),
 		--    ['<Down>'] = cmp.mapping.select_next_item(cmp_select_opts),
-		["<C-p>"] = cmp.mapping(function()
+		["<C-k>"] = cmp.mapping(function()
 			if cmp.visible() then
 				cmp.select_prev_item(cmp_select_opts)
 			else
 				cmp.complete()
 			end
 		end),
-		["<C-n>"] = cmp.mapping(function()
+		["<C-j>"] = cmp.mapping(function()
 			if cmp.visible() then
 				cmp.select_next_item(cmp_select_opts)
 			else
@@ -111,17 +121,9 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "buffer", keyword_length = 3 },
 		{ name = "luasnip", keyword_length = 2 },
-	},
-	formatting = {
-		format = lspkind.cmp_format({
-			mode = "symbol_text", -- show only symbol annotations
-			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-
-			-- The function below will be called before any actual modifications from lspkind
-			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-			before = function(entry, vim_item)
-				return vim_item
-			end,
-		}),
+		{ name = "emoji" },
+		{ name = "dap" },
 	},
 })
+
+lsp.setup()

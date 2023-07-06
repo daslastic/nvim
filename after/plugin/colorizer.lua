@@ -1,1 +1,1 @@
-require("colorizer").setup()
+

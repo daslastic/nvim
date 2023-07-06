@@ -22,12 +22,21 @@ return require("packer").startup(function(use)
 	use("numToStr/Comment.nvim")
 
 	-- editor
+	use("christoomey/vim-tmux-navigator")
+	use("ellisonleao/gruvbox.nvim")
 	use("andymass/vim-matchup")
 	use("mbbill/undotree")
 	use("folke/todo-comments.nvim")
 	use("lewis6991/gitsigns.nvim")
 	use("RRethy/vim-illuminate")
 	use("norcalli/nvim-colorizer.lua")
+	use({
+		"mawkler/modicator.nvim",
+		after = "gruvbox.nvim",
+		config = function()
+			require("modicator").setup()
+		end,
+	})
 
 	-- editor sessions
 	use("rmagatti/auto-session")
@@ -35,7 +44,6 @@ return require("packer").startup(function(use)
 
 	use({ "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
-	use("ellisonleao/gruvbox.nvim")
 	use("folke/zen-mode.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use({ "j-hui/fidget.nvim", tag = "legacy" })
@@ -45,7 +53,7 @@ return require("packer").startup(function(use)
 
 	use("m4xshen/hardtime.nvim")
 	use("ThePrimeagen/vim-be-good")
-	use("psliwka/vim-smoothie")
+	-- use("psliwka/vim-smoothie")
 
 	-- lsp
 	use({
@@ -63,11 +71,9 @@ return require("packer").startup(function(use)
 
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-emoji" },
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "L3MON4D3/LuaSnip" },
-
-			-- Pictograms
-			{ "onsails/lspkind.nvim" },
 
 			-- Other
 			{ "folke/neodev.nvim" },
@@ -75,6 +81,7 @@ return require("packer").startup(function(use)
 	})
 
 	use("lvimuser/lsp-inlayhints.nvim")
+	use("ray-x/lsp_signature.nvim")
 	use("rafamadriz/friendly-snippets")
 	use("saadparwaiz1/cmp_luasnip")
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -86,5 +93,7 @@ return require("packer").startup(function(use)
 		dependencies = { "nvim-lua/plenary.nvim" },
 	})
 
-	-- TODO: DAP ME
+	-- dap
+	use("mfussenegger/nvim-dap")
+	use("rcarriga/nvim-dap-ui")
 end)

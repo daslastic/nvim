@@ -29,9 +29,3 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
 -- visual move tab, hl
 vim.keymap.set("v", "<S-h>", "<gv")
 vim.keymap.set("v", "<S-l>", ">gv")
-
--- ctrl swap
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-l>", "<C-w>l")

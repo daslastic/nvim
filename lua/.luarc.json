@@ -19,5 +19,6 @@
         "/Users/shalev/.local/share/nvim/site/pack/packer/start/zen-mode.nvim/lua",
         "/Users/shalev/.config/nvim/lua",
         "${3rd}/luv/library"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }
