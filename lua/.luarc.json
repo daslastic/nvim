@@ -1,24 +1,9 @@
 {
     "workspace.library": [
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/neodev.nvim/types/stable",
+        "/Users/shalev/.local/share/nvim/lazy/neodev.nvim/types/stable",
         "/opt/homebrew/Cellar/neovim/0.9.1/share/nvim/runtime/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/gruvbox.nvim/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/lspkind.nvim/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/LuaSnip/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/mason.nvim/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/neodev.nvim/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/nvim-cmp/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/nvim-lspconfig/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/nvim-treesitter/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/packer.nvim/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/plenary.nvim/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/telescope.nvim/lua",
-        "/Users/shalev/.local/share/nvim/site/pack/packer/start/zen-mode.nvim/lua",
+        "/Users/shalev/.local/share/nvim/lazy/nvim-dap-ui/lua",
         "/Users/shalev/.config/nvim/lua",
         "${3rd}/luv/library"
-    ],
-    "workspace.checkThirdParty": false
+    ]
 }

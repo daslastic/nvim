@@ -1,4 +1,8 @@
-require("zen-mode").setup({
+local s = safe_require("zen-mode")
+if not s then
+	return
+end
+s.setup({
 	window = {
 		backdrop = 1,
 		height = 0.9,

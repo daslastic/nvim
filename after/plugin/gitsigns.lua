@@ -1,4 +1,8 @@
-require('gitsigns').setup {
+local s = safe_require('gitsigns')
+if not s then
+  return
+end
+s.setup {
   signs                        = {
     add          = { text = '│' },
     change       = { text = '│' },

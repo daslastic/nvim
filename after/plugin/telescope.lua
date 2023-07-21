@@ -1,4 +1,8 @@
-require("telescope").setup({
+local s = safe_require("telescope")
+if not s then
+	return
+end
+s.setup({
 	defaults = {
 		layout_config = {
 			vertical = { width = 0.5 },
@@ -9,6 +13,7 @@ require("telescope").setup({
 		file_ignore_patterns = {
 			".DS_Store",
 			".git/",
+			"lib/",
 			"target/",
 			"docs/",
 			"vendor/*",

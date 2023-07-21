@@ -1,6 +1,12 @@
-require("nvim-treesitter.configs").setup({
+local s = safe_require("nvim-treesitter.configs")
+if not s then
+	return
+end
+
+s.setup({
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
 	ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript" },
+	ignore_install = {},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -32,6 +38,35 @@ require("nvim-treesitter.configs").setup({
 	matchup = {
 		enable = true,
 	},
+	playground = {
+		enable = true,
+		disable = {},
+		updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+		persist_queries = false, -- Whether the query persists across vim sessions
+		keybindings = {
+			toggle_query_editor = "o",
+			toggle_hl_groups = "i",
+			toggle_injected_languages = "t",
+			toggle_anonymous_nodes = "a",
+			toggle_language_display = "I",
+			focus_language = "f",
+			unfocus_language = "F",
+			update = "R",
+			goto_node = "<cr>",
+			show_help = "?",
+		},
+	},
+	textobjects = {
+		swap = {
+			enable = true,
+			swap_next = {
+				["<leader>a"] = "@parameter.inner",
+			},
+			swap_previous = {
+				["<leader>A"] = "@parameter.inner",
+			},
+		},
+	},
 })
 
 require("treesitter-context").setup({
@@ -47,18 +82,4 @@ require("treesitter-context").setup({
 	separator = nil,
 	zindex = 20, -- The Z-index of the context window
 	on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-})
-
-require("nvim-treesitter.configs").setup({
-	textobjects = {
-		swap = {
-			enable = true,
-			swap_next = {
-				["<leader>a"] = "@parameter.inner",
-			},
-			swap_previous = {
-				["<leader>A"] = "@parameter.inner",
-			},
-		},
-	},
 })

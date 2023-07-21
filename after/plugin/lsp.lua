@@ -1,4 +1,17 @@
-local lsp = require("lsp-zero").preset({
+local s = safe_require("neodev")
+if not s then
+	return
+end
+s.setup({
+	library = { plugins = { "nvim-dap-ui" }, types = true },
+})
+
+local lsp = safe_require("lsp-zero")
+if not lsp then
+	return
+end
+
+lsp.preset({
 	manage_nvim_cmp = {
 		set_sources = "recommended",
 	},
@@ -90,7 +103,11 @@ local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
 local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 
-require("luasnip.loaders.from_vscode").lazy_load()
+local luasnip = safe_require("luasnip.loaders.from_vscode")
+if not luasnip then
+	return
+end
+luasnip.lazy_load()
 
 cmp.setup({
 	mapping = {

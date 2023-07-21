@@ -1,6 +1,9 @@
-require("lualine").setup({
+local s = safe_require("lualine")
+if not s then
+	return
+end
+s.setup({
 	options = {
-		theme = Lualine(),
 		icons_enabled = true,
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },

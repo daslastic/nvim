@@ -49,3 +49,11 @@ local options = {
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+function safe_require(s)
+	local status_ok, needed = pcall(require, s)
+	if not status_ok then
+		return status_ok
+	end
+	return needed
+end

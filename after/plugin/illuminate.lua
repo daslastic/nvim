@@ -1,4 +1,8 @@
-require("illuminate").configure({
+local s = safe_require("illuminate")
+if not s then
+  return
+end 
+s.configure({
 	-- providers: provider used to get references in the buffer, ordered by priority
 	providers = {
 		"lsp",
