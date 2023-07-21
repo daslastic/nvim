@@ -31,11 +31,11 @@ local options = {
 	tabstop = 2,
 	cursorline = true,
 	number = true,
-	laststatus = 0, -- who needs statsbar, 3
+	laststatus = 0, -- who needs statusbar, 3
 	showcmd = false,
 	ruler = false,
 	relativenumber = true,
-	numberwidth = 4,
+	numberwidth = 3,
 	signcolumn = "yes",
 	wrap = true,
 	scrolloff = 8,
@@ -50,7 +50,7 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-function safe_require(s)
+function _G.safe_require(s)
 	local status_ok, needed = pcall(require, s)
 	if not status_ok then
 		return status_ok
