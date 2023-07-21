@@ -37,7 +37,7 @@ p.setup({
 
 	-- editor
 	"ellisonleao/gruvbox.nvim",
-	{ "christoomey/vim-tmux-navigator", lazy = true },
+	"christoomey/vim-tmux-navigator",
 	{ "andymass/vim-matchup", lazy = true },
 	{ "mbbill/undotree", lazy = true },
 	{ "folke/todo-comments.nvim", lazy = true },
@@ -78,7 +78,7 @@ p.setup({
 	{ "rafamadriz/friendly-snippets", lazy = true },
 	{ "saadparwaiz1/cmp_luasnip", lazy = true },
 	{ "jose-elias-alvarez/null-ls.nvim", lazy = true },
-	{ "mfussenegger/nvim-jdtls", lazy = true },
+	"mfussenegger/nvim-jdtls",
 
 	{
 		"saecki/crates.nvim",
@@ -91,10 +91,16 @@ p.setup({
 	{ "rcarriga/nvim-dap-ui", lazy = true },
 
 	-- text editing
-	{ "lervag/vimtex", lazy = true },
+	{
+		"iamcco/markdown-preview.nvim",
+		lazy = true,
+		config = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+	"lervag/vimtex",
 
 	-- cozy
 	{ "folke/zen-mode.nvim", lazy = true },
-	"nvim-lualine/lualine.nvim",
 	{ "j-hui/fidget.nvim", tag = "legacy", lazy = true },
 })
