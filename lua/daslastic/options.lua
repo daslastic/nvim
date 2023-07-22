@@ -22,8 +22,6 @@ local options = {
 	swapfile = false,
 	termguicolors = true,
 	timeoutlen = 1000,
-	undofile = true,
-	undodir = os.getenv("HOME") .. "/.cache/vimundo",
 	updatetime = 50,
 	writebackup = false,
 	expandtab = true,
@@ -40,20 +38,13 @@ local options = {
 	wrap = true,
 	scrolloff = 8,
 	sidescrolloff = 8,
-	colorcolumn = "100",
+	-- colorcolumn = "100",
 	guifont = "monospace:h17",
 	title = true,
 	titleold = vim.split(os.getenv("SHELL") or "", "/")[3],
+	undofile = true,
 }
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
-end
-
-function _G.safe_require(s)
-	local status_ok, needed = pcall(require, s)
-	if not status_ok then
-		return status_ok
-	end
-	return needed
 end

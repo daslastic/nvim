@@ -2,62 +2,62 @@ local s = safe_require("neodev")
 if not s then
 	return
 end
-s.setup({
-	library = { plugins = { "nvim-dap-ui" }, types = true },
-})
+s.setup()
 
-local lsp = safe_require("lsp-zero")
-if not lsp then
+local cmp_nvim = safe_require("cmp_nvim_lsp")
+if not cmp_nvim then
 	return
 end
 
-lsp.preset({
-	manage_nvim_cmp = {
-		set_sources = "recommended",
+local lspconfig = require("lspconfig")
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = cmp_nvim.default_capabilities(capabilities)
+
+local servers = {
+	awk_ls = {},
+	bashls = {},
+	clangd = {},
+	cmake = {},
+	eslint = {},
+	golangci_lint_ls = {},
+	html = {},
+	lua_ls = {
+		Lua = {
+			workspace = { checkThirdParty = false },
+			telemetry = { enable = false },
+		},
 	},
+	jsonls = {},
+	tsserver = {},
+	julials = {},
+	intelephense = {},
+	pyright = {},
+	tailwindcss = {},
+	taplo = {},
+	lemminx = {},
+	yamlls = {},
+	zls = {},
+	rust_analyzer = {},
+	svelte = {},
+	vuels = {},
+	tflint = {},
+	terraformls = {},
+	emmet_ls = {},
+	cssls = {},
+	cssmodules_ls = {},
+}
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+	automatic_installation = true,
+	ensure_installed = vim.tbl_keys(servers),
 })
 
-lsp.on_attach(function(client, bufnr)
-	lsp.default_keymaps({ buffer = bufnr })
-end)
+local on_attach = function(_, bufnr)
+	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+		vim.lsp.buf.format()
+	end, { desc = "Format current buffer with LSP" })
 
-lsp.ensure_installed({
-	"awk_ls", -- AWK --
-	"bashls", -- Bash --
-	"clangd", -- C & C++ --
-	"cmake", -- CMake --
-	"eslint", -- ESLint --
-	"golangci_lint_ls", -- Go --
-	"html", -- HTML --
-	"lua_ls", --
-	"jsonls", -- Json --
-	"tsserver", -- Javascript/Typescript --
-	"julials", -- Julia --
-	"intelephense", -- PHP --
-	"pyright", -- Python --
-	"tailwindcss", -- Tailwind --
-	"taplo", -- TOML --
-	"lemminx", -- XML --
-	"yamlls", -- YAML --
-	"zls", -- Zig --
-	"rust_analyzer", -- Rust
-	"svelte", -- Svelte
-	"vuels", -- Vue
-	"tflint", --
-	"terraformls", --
-	"emmet_ls", -- Emmet --
-	"cssls", -- CSS --
-	"cssmodules_ls", --
-})
-
-lsp.set_sign_icons({
-	error = " ",
-	warn = " ",
-	hint = "󰞂",
-	info = "",
-})
-
-lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 	require("lsp_signature").on_attach({
 		bind = true,
@@ -97,50 +97,32 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
-end)
 
-local cmp = require("cmp")
-local cmp_action = require("lsp-zero").cmp_action()
-local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
-
-local luasnip = safe_require("luasnip.loaders.from_vscode")
-if not luasnip then
-	return
+	vim.keymap.set("n", "<leader>af", function()
+		vim.lsp.buf.format({ async = false })
+	end, opts)
+	vim.keymap.set("n", "<leader>aj", function()
+		vim.diagnostic.goto_next()
+	end, opts)
+	vim.keymap.set("n", "<leader>ak", function()
+		vim.diagnostic.goto_prev()
+	end, opts)
 end
-luasnip.lazy_load()
 
-cmp.setup({
-	mapping = {
-		["<Tab>"] = cmp_action.tab_complete(),
-		["<Return>"] = cmp.mapping.confirm({ select = true }),
-		["<C-e>"] = cmp.mapping.abort(),
-		["<C-u>"] = cmp.mapping.scroll_docs(-4),
-		["<C-d>"] = cmp.mapping.scroll_docs(4),
-		--    ['<Up>'] = cmp.mapping.select_prev_item(cmp_select_opts),
-		--    ['<Down>'] = cmp.mapping.select_next_item(cmp_select_opts),
-		["<C-k>"] = cmp.mapping(function()
-			if cmp.visible() then
-				cmp.select_prev_item(cmp_select_opts)
-			else
-				cmp.complete()
-			end
-		end),
-		["<C-j>"] = cmp.mapping(function()
-			if cmp.visible() then
-				cmp.select_next_item(cmp_select_opts)
-			else
-				cmp.complete()
-			end
-		end),
-	},
-	sources = {
-		{ name = "path" },
-		{ name = "nvim_lsp" },
-		{ name = "buffer", keyword_length = 3 },
-		{ name = "luasnip", keyword_length = 2 },
-		{ name = "emoji" },
-		{ name = "dap" },
-	},
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		lspconfig[server_name].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = servers[server_name],
+		})
+	end,
 })
 
-lsp.setup()
+-- for _, server_name in ipairs(require("mason-lspconfig").get_installed_servers()) do
+-- 	lspconfig[server_name].setup({
+-- 		capabilities = capabilities,
+-- 		on_attach = on_attach,
+-- 		settings = servers[server_name],
+-- 	})
+-- end

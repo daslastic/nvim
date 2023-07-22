@@ -33,26 +33,22 @@ p.setup({
 
 	{ "windwp/nvim-ts-autotag", lazy = true },
 	{ "windwp/nvim-autopairs", lazy = true },
-	{ "numToStr/Comment.nvim", lazy = true },
+	{ "numToStr/Comment.nvim" },
 
 	-- editor
 	"ellisonleao/gruvbox.nvim",
 	"christoomey/vim-tmux-navigator",
-	{ "andymass/vim-matchup", lazy = true },
 	{ "mbbill/undotree", lazy = true },
 	{ "folke/todo-comments.nvim", lazy = true },
-	"lewis6991/gitsigns.nvim",
+	-- "lewis6991/gitsigns.nvim",
 	{ "RRethy/vim-illuminate", lazy = true },
 	{ "norcalli/nvim-colorizer.lua", lazy = true },
 
 	{ "nvim-telescope/telescope.nvim", lazy = true },
 
 	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v2.x",
-		lazy = true,
+		"hrsh7th/nvim-cmp",
 		dependencies = {
-			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
 			{
 				"williamboman/mason.nvim",
@@ -65,26 +61,27 @@ p.setup({
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-path" },
 			{ "hrsh7th/cmp-emoji" },
 			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "lvimuser/lsp-inlayhints.nvim" },
+			{ "ray-x/lsp_signature.nvim" },
+			{ "jose-elias-alvarez/null-ls.nvim" },
 
 			-- other
 			{ "folke/neodev.nvim" },
 		},
 	},
 
-	{ "lvimuser/lsp-inlayhints.nvim", lazy = true },
-	{ "ray-x/lsp_signature.nvim", lazy = true },
-	{ "rafamadriz/friendly-snippets", lazy = true },
-	{ "saadparwaiz1/cmp_luasnip", lazy = true },
-	{ "jose-elias-alvarez/null-ls.nvim", lazy = true },
-	"mfussenegger/nvim-jdtls",
-
+	-- server
+	{ "mfussenegger/nvim-jdtls" },
 	{
 		"saecki/crates.nvim",
-		lazy = true,
 		branch = "v0.3.0",
 	},
+	{ "lervag/vimtex" },
 
 	-- dap
 	{ "mfussenegger/nvim-dap", lazy = true },
@@ -98,9 +95,8 @@ p.setup({
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
-	"lervag/vimtex",
 
 	-- cozy
-	{ "folke/zen-mode.nvim", lazy = true },
+	{ "folke/zen-mode.nvim" },
 	{ "j-hui/fidget.nvim", tag = "legacy", lazy = true },
 })

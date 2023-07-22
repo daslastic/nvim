@@ -2,7 +2,7 @@ vim.cmd("setlocal tabstop=4 shiftwidth=4")
 
 local home = os.getenv("HOME")
 local nvim = vim.fn.glob(home .. "/.local/share/nvim/")
-local jdtls = G.safe_require("jdtls")
+local jdtls = safe_require("jdtls")
 if not jdtls then
 	return
 end
@@ -14,7 +14,7 @@ if vim.fn.has("mac") == 1 then
 
 	local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
-	local workspace_dir = home .. nvim .. "jdtls-workspace" .. project_name
+	local workspace_dir = nvim .. "jdtls-workspace" .. project_name
 
 	-- This bundles definition is the same as in the previous section (java-debug installation)
 	local bundles = {
@@ -28,7 +28,7 @@ if vim.fn.has("mac") == 1 then
 	vim.list_extend(bundles, vim.split(vim.fn.glob(utils .. "/vscode-java-test/server/*.jar", 1), "\n"))
 
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities.textDocument.completion.completionItem.snippetSupport = false
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
 	capabilities = require("cmp_nvim_lsp").default_capabilities()
 	local extendedClientCapabilities = jdtls.extendedClientCapabilities
 	extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
@@ -148,13 +148,6 @@ if vim.fn.has("mac") == 1 then
 		},
 	}
 
-	vim.keymap.set("n", "<Leader>co", "<cmd>lua require('jdtls').organize_imports()<cr>")
-	vim.keymap.set("n", "<Leader>cv", "<cmd>lua require('jdtls').extract_variable()<cr>")
-	vim.keymap.set("n", "<Leader>cc", "<cmd>lua require('jdtls').extract_const()<cr>")
-	vim.keymap.set("n", "<Leader>ct", "<cmd>lua require('jdtls').test_nearest_method()<cr>")
-	vim.keymap.set("n", "<Leader>cT", "<cmd>lua require('jdtls').test_class()<cr>")
-	vim.keymap.set("n", "<Leader>cu", "<cmd>JdtUpdateConfig<cr>")
-
 	config["on_attach"] = function(client, bufnr)
 		require("lsp_signature").on_attach({
 			bind = true,
@@ -165,6 +158,13 @@ if vim.fn.has("mac") == 1 then
 			},
 		}, bufnr)
 		require("jdtls").setup_dap({ hotcodereplace = "auto" })
+
+		vim.keymap.set("n", "<Leader>co", "<cmd>lua require('jdtls').organize_imports()<cr>")
+		vim.keymap.set("n", "<Leader>cv", "<cmd>lua require('jdtls').extract_variable()<cr>")
+		vim.keymap.set("n", "<Leader>cc", "<cmd>lua require('jdtls').extract_const()<cr>")
+		vim.keymap.set("n", "<Leader>ct", "<cmd>lua require('jdtls').test_nearest_method()<cr>")
+		vim.keymap.set("n", "<Leader>cT", "<cmd>lua require('jdtls').test_class()<cr>")
+		vim.keymap.set("n", "<Leader>cu", "<cmd>JdtUpdateConfig<cr>")
 	end
 
 	jdtls.start_or_attach(config)

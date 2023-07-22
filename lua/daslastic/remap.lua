@@ -17,10 +17,6 @@ vim.keymap.set("n", "<leader>z", ":ZenMode<cr>")
 -- vim.keymap.set("n", "<leader>p", ":SearchSession<cr>")
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
-vim.keymap.set("n", "<leader>af", ":lua vim.lsp.buf.format({ async = false })<cr>")
-vim.keymap.set("n", "<leader>aj", ":lua vim.diagnostic.goto_next()<cr>")
-vim.keymap.set("n", "<leader>ak", ":lua vim.diagnostic.goto_prev()<cr>")
-
 vim.keymap.set("n", "<C-Up>", ":resize -2<CR>")
 vim.keymap.set("n", "<C-Down>", ":resize +2<CR>")
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
