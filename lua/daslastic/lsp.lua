@@ -10,9 +10,11 @@ if not cmp_nvim then
 end
 
 local lspconfig = require("lspconfig")
-local capabilities = cmp_nvim.default_capabilities()
 
-local servers = {
+local M = {}
+
+M.capabilities = cmp_nvim.default_capabilities()
+M.servers = {
   awk_ls = {},
   bashls = {},
   clangd = {},
@@ -46,25 +48,8 @@ local servers = {
   cssmodules_ls = {},
 }
 
-require("mason").setup()
-require("mason-lspconfig").setup({
-  automatic_installation = true,
-  ensure_installed = vim.tbl_keys(servers),
-})
-
-local on_attach = function(_, bufnr)
-  vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-    vim.lsp.buf.format()
-  end, { desc = "Format current buffer with LSP" })
-
+function M.keymaps(bufnr)
   local opts = { buffer = bufnr, remap = false }
-  require("lsp_signature").on_attach({
-    bind = true,
-    floating_window_above_cur_line = true,
-    handler_opts = {
-      border = "rounded",
-    },
-  }, bufnr)
 
   vim.keymap.set("n", "gd", function()
     vim.lsp.buf.definition()
@@ -108,12 +93,42 @@ local on_attach = function(_, bufnr)
   end, opts)
 end
 
+M.on_attach = function(_, bufnr)
+  M.keymaps(bufnr)
+
+  vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+    vim.lsp.buf.format()
+  end, { desc = "Format current buffer" })
+
+  local lsp_signature = safe_require("lsp_signature")
+  if not lsp_signature then
+    return
+  end
+
+  lsp_signature.on_attach({
+    bind = true,
+    floating_window_above_cur_line = true,
+    handler_opts = {
+      border = "rounded",
+    },
+  }, bufnr)
+end
+
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+  automatic_installation = true,
+  ensure_installed = vim.tbl_keys(M.servers),
+})
+
 require("mason-lspconfig").setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
+      capabilities = M.capabilities,
+      on_attach = M.on_attach,
+      settings = M.servers[server_name],
     })
   end,
 })
+
+return M

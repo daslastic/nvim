@@ -43,6 +43,7 @@ local options = {
   title = true,
   titleold = vim.split(os.getenv("SHELL") or "", "/")[3],
   undofile = true,
+  undodir = os.getenv("HOME") .. "/.cache/vimundo",
 }
 
 for k, v in pairs(options) do

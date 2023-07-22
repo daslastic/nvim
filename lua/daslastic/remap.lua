@@ -13,8 +13,6 @@ vim.keymap.set("n", "<leader>F", grep, {})
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
-vim.keymap.set("n", "<leader>z", ":ZenMode<cr>")
--- vim.keymap.set("n", "<leader>p", ":SearchSession<cr>")
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 vim.keymap.set("n", "<C-Up>", ":resize -2<CR>")

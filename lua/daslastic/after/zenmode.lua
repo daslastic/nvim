@@ -17,3 +17,5 @@ s.setup({
   },
   plugins = {},
 })
+
+vim.keymap.set("n", "<leader>z", ":ZenMode<cr>")

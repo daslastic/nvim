@@ -33,14 +33,14 @@ p.setup({
 
   { "windwp/nvim-ts-autotag", lazy = true },
   { "windwp/nvim-autopairs",  lazy = true },
-  { "numToStr/Comment.nvim" },
+  { "numToStr/Comment.nvim",  lazy = true },
 
   -- editor
   "ellisonleao/gruvbox.nvim",
   "christoomey/vim-tmux-navigator",
-  { "mbbill/undotree",          lazy = true },
-  { "folke/todo-comments.nvim", lazy = true },
-  "lewis6991/gitsigns.nvim",
+  "mbbill/undotree",
+  { "folke/todo-comments.nvim",      lazy = true },
+  { "lewis6991/gitsigns.nvim",       lazy = true },
   { "RRethy/vim-illuminate",         lazy = true },
   { "norcalli/nvim-colorizer.lua",   lazy = true },
 
@@ -59,16 +59,16 @@ p.setup({
       { "williamboman/mason-lspconfig.nvim" },
 
       -- Autocompletion
-      { "hrsh7th/nvim-cmp" },
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "hrsh7th/cmp-path" },
-      { "hrsh7th/cmp-emoji" },
-      { "L3MON4D3/LuaSnip" },
-      { "rafamadriz/friendly-snippets" },
-      { "saadparwaiz1/cmp_luasnip" },
-      { "lvimuser/lsp-inlayhints.nvim" },
-      { "ray-x/lsp_signature.nvim" },
-      { "jose-elias-alvarez/null-ls.nvim" },
+      { "hrsh7th/nvim-cmp",                 lazy = true },
+      { "hrsh7th/cmp-nvim-lsp",             lazy = true },
+      { "hrsh7th/cmp-path",                 lazy = true },
+      { "hrsh7th/cmp-emoji",                lazy = true },
+      { "L3MON4D3/LuaSnip",                 lazy = true },
+      { "rafamadriz/friendly-snippets",     lazy = true },
+      { "saadparwaiz1/cmp_luasnip",         lazy = true },
+      { "lvimuser/lsp-inlayhints.nvim",     lazy = true },
+      { "ray-x/lsp_signature.nvim",         lazy = true },
+      { "jose-elias-alvarez/null-ls.nvim",  lazy = true },
 
       -- other
       { "folke/neodev.nvim" },
@@ -76,27 +76,23 @@ p.setup({
   },
 
   -- server
-  { "mfussenegger/nvim-jdtls" },
+  { "mfussenegger/nvim-jdtls", lazy = true },
   {
     "saecki/crates.nvim",
     branch = "v0.3.0",
+    lazy = true,
   },
-  { "lervag/vimtex" },
+  { "lervag/vimtex",           lazy = true },
 
   -- dap
-  { "mfussenegger/nvim-dap",  lazy = true },
-  { "rcarriga/nvim-dap-ui",   lazy = true },
-
-  -- text editing
-  {
-    "iamcco/markdown-preview.nvim",
-    lazy = true,
-    config = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
+  { "mfussenegger/nvim-dap",   lazy = true },
+  { "rcarriga/nvim-dap-ui",    lazy = true },
 
   -- cozy
-  { "folke/zen-mode.nvim" },
-  { "j-hui/fidget.nvim",  tag = "legacy", lazy = true },
+  { "folke/zen-mode.nvim",     lazy = true },
+  { "j-hui/fidget.nvim",       tag = "legacy", lazy = true },
+
+  -- sessions
+  { "rmagatti/auto-session" },
+  -- { "rmagatti/session-lens" },
 })
