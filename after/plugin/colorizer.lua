@@ -1,5 +1,5 @@
 local s = safe_require("colorizer")
 if not s then
-	return
+  return
 end
 s.setup()

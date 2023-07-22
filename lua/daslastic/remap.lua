@@ -1,9 +1,9 @@
 vim.g.mapleader = " "
 
 local find =
-	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({previewer = true, hidden = true, no_ignore = true}))<cr>"
+"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({previewer = true, hidden = true, no_ignore = true}))<cr>"
 local grep =
-	"<cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({previewer = true, hidden = true, no_ignore = true}))<cr>"
+"<cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({previewer = true, hidden = true, no_ignore = true}))<cr>"
 
 vim.keymap.set("n", "<leader>%", ":vsplit<cr>" .. find)
 vim.keymap.set("n", '<leader>"', ":split<cr>" .. find)
