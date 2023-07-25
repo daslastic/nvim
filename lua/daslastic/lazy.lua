@@ -82,7 +82,7 @@ p.setup({
     branch = "v0.3.0",
     lazy = true,
   },
-  { "lervag/vimtex",           lazy = true },
+  { "lervag/vimtex" },
 
   -- dap
   { "mfussenegger/nvim-dap",   lazy = true },

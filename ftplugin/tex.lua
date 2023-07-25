@@ -1,7 +1,6 @@
 -- This enables Vim's and neovim's syntax-related features. Without this, some
 -- VimTeX features will not work (see ":help vimtex-requirements" for more
 -- info).
-require("vimtex")
 vim.cmd("filetype plugin indent on")
 
 -- Viewer options: One may configure the viewer either by specifying a built-in

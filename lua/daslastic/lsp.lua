@@ -46,6 +46,7 @@ M.servers = {
   emmet_ls = {},
   cssls = {},
   cssmodules_ls = {},
+  omnisharp = {},
 }
 
 function M.keymaps(bufnr)
