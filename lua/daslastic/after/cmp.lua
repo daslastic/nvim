@@ -63,7 +63,7 @@ cmp.setup({
     { name = "path" },
     { name = "emoji" },
     { name = "treesitter" },
-    { name = "crates" },
+    -- { name = "crates" }, -- check autocommands
     { name = "nvim_lsp" },
     { name = "luasnip" },
   }),

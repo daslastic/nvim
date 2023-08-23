@@ -110,19 +110,28 @@ M.on_attach = function(_, bufnr)
     bind = true,
     floating_window_above_cur_line = true,
     handler_opts = {
-      border = "rounded",
+      border = "none",
     },
   }, bufnr)
 end
 
+local mason = safe_require("mason")
+if not mason then
+  return
+end
 
-require("mason").setup()
-require("mason-lspconfig").setup({
+local mason_ls = safe_require("mason-lspconfig")
+if not mason_ls then
+  return
+end
+
+mason.setup()
+mason_ls.setup({
   automatic_installation = true,
   ensure_installed = vim.tbl_keys(M.servers),
 })
 
-require("mason-lspconfig").setup_handlers({
+mason_ls.setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
       capabilities = M.capabilities,

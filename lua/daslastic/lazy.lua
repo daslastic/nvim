@@ -37,14 +37,13 @@ p.setup({
 
   -- editor
   "ellisonleao/gruvbox.nvim",
-  "christoomey/vim-tmux-navigator",
+  "nvim-telescope/telescope.nvim",
+  "aserowy/tmux.nvim",
   "mbbill/undotree",
-  { "folke/todo-comments.nvim",      lazy = true },
-  { "lewis6991/gitsigns.nvim",       lazy = true },
-  { "RRethy/vim-illuminate",         lazy = true },
-  { "norcalli/nvim-colorizer.lua",   lazy = true },
-
-  { "nvim-telescope/telescope.nvim", lazy = true },
+  { "folke/todo-comments.nvim",    lazy = true },
+  { "lewis6991/gitsigns.nvim",     lazy = true },
+  { "RRethy/vim-illuminate",       lazy = true },
+  { "norcalli/nvim-colorizer.lua", lazy = true },
 
   {
     "hrsh7th/nvim-cmp",
@@ -79,7 +78,12 @@ p.setup({
   { "mfussenegger/nvim-jdtls", lazy = true },
   {
     "saecki/crates.nvim",
-    branch = "v0.3.0",
+    tag = 'v0.3.0',
+    event = { "BufRead Cargo.toml" },
+    lazy = true,
+  },
+  {
+    'simrat39/rust-tools.nvim',
     lazy = true,
   },
   { "lervag/vimtex" },
@@ -91,8 +95,8 @@ p.setup({
   -- cozy
   { "folke/zen-mode.nvim",     lazy = true },
   { "j-hui/fidget.nvim",       tag = "legacy", lazy = true },
-
-  -- sessions
-  { "rmagatti/auto-session" },
-  -- { "rmagatti/session-lens" },
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   config = function() vim.fn["mkdp#util#install"]() end,
+  -- }
 })

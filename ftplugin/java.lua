@@ -42,7 +42,7 @@ if vim.fn.has("mac") == 1 then
       "--add-opens",
       "java.base/java.lang=ALL-UNNAMED",
       "-jar",
-      jdtls_lib .. "/plugins/org.eclipse.equinox.launcher_1.6.500.v20230622-2056.jar",
+      jdtls_lib .. "/plugins/org.eclipse.equinox.*.jar",
       "-configuration",
       jdtls_lib .. "/config_mac",
       "-data",

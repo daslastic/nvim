@@ -2,6 +2,7 @@ local s = safe_require("gruvbox")
 if not s then
   return
 end
+
 s.setup({
   undercurl = true,
   underline = true,

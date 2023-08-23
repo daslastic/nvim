@@ -4,8 +4,9 @@ require("daslastic.remap")
 require("daslastic.lazy")
 require("daslastic.lsp")
 require("daslastic.treesitter")
-require("daslastic.autosession")
+-- require("daslastic.autosession")
 require("daslastic.gruvbox")
+require("daslastic.telescope")
 
 -- lazy load
 require("daslastic.after")

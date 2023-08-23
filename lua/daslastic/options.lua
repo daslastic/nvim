@@ -8,8 +8,6 @@ local options = {
   completeopt = { "menuone", "noselect" },
   conceallevel = 0,
   fileencoding = "utf-8",
-  hlsearch = false,
-  incsearch = true,
   ignorecase = true,
   mouse = "a",
   pumheight = 10,
@@ -33,9 +31,9 @@ local options = {
   showcmd = false,
   ruler = false,
   relativenumber = true,
-  numberwidth = 3,
+  numberwidth = 2,
   signcolumn = "yes",
-  wrap = true,
+  wrap = false,
   scrolloff = 8,
   sidescrolloff = 8,
   -- colorcolumn = "100",
@@ -44,7 +42,11 @@ local options = {
   titleold = vim.split(os.getenv("SHELL") or "", "/")[3],
   undofile = true,
   undodir = os.getenv("HOME") .. "/.cache/vimundo",
+  hlsearch = false,
+  incsearch = true,
 }
+
+vim.g.netrw_list_hide = '.DS_Store'
 
 for k, v in pairs(options) do
   vim.opt[k] = v

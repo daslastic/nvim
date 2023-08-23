@@ -3,7 +3,7 @@ local M = {}
 function M.after_init()
   require("daslastic.after.comment")
   require("daslastic.after.cmp")
-  require("daslastic.after.telescope")
+  require("daslastic.after.tmux")
   require("daslastic.after.autocommands")
   require("daslastic.after.gitsigns")
   require("daslastic.after.illuminate")
@@ -15,6 +15,7 @@ function M.after_init()
   require("daslastic.after.dap")
   require("daslastic.after.colorizer")
   require("daslastic.after.inlayhints")
+  require("daslastic.after.rt")
 end
 
-vim.defer_fn(M.after_init, 50)
+vim.defer_fn(M.after_init, 30)
