@@ -1,11 +1,11 @@
-local s = safe_require("zen-mode")
-if not s then
+local zenmode = safe_require "zen-mode"
+if not zenmode then
   return
 end
-s.setup({
+
+zenmode.opts = {
   window = {
     backdrop = 1,
-    height = 0.9,
     width = 120,
     options = {
       signcolumn = "no",
@@ -15,7 +15,6 @@ s.setup({
       cursorcolumn = false, -- disable cursor column
     },
   },
-  plugins = {},
-})
+}
 
 vim.keymap.set("n", "<leader>z", ":ZenMode<cr>")

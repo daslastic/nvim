@@ -25,25 +25,22 @@ p.setup({
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "nvim-treesitter/nvim-treesitter-context",
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "nvim-treesitter/playground",
     },
     build = ":TSUpdate",
   },
 
-  { "windwp/nvim-ts-autotag", lazy = true },
-  { "windwp/nvim-autopairs",  lazy = true },
-  { "numToStr/Comment.nvim",  lazy = true },
+  "windwp/nvim-ts-autotag",
+  "windwp/nvim-autopairs",
+  "numToStr/Comment.nvim",
 
   -- editor
   "ellisonleao/gruvbox.nvim",
   "nvim-telescope/telescope.nvim",
   "aserowy/tmux.nvim",
   "mbbill/undotree",
-  { "folke/todo-comments.nvim",    lazy = true },
-  { "lewis6991/gitsigns.nvim",     lazy = true },
-  { "RRethy/vim-illuminate",       lazy = true },
-  { "norcalli/nvim-colorizer.lua", lazy = true },
+  "folke/todo-comments.nvim",
+  -- "RRethy/vim-illuminate",
+  "norcalli/nvim-colorizer.lua",
 
   {
     "hrsh7th/nvim-cmp",
@@ -58,19 +55,19 @@ p.setup({
       { "williamboman/mason-lspconfig.nvim" },
 
       -- Autocompletion
-      { "hrsh7th/nvim-cmp",                 lazy = true },
-      { "hrsh7th/cmp-nvim-lsp",             lazy = true },
-      { "hrsh7th/cmp-path",                 lazy = true },
-      { "hrsh7th/cmp-emoji",                lazy = true },
-      { "L3MON4D3/LuaSnip",                 lazy = true },
-      { "rafamadriz/friendly-snippets",     lazy = true },
-      { "saadparwaiz1/cmp_luasnip",         lazy = true },
-      { "lvimuser/lsp-inlayhints.nvim",     lazy = true },
-      { "ray-x/lsp_signature.nvim",         lazy = true },
-      { "jose-elias-alvarez/null-ls.nvim",  lazy = true },
+      "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-emoji",
+      "L3MON4D3/LuaSnip",
+      "rafamadriz/friendly-snippets",
+      "saadparwaiz1/cmp_luasnip",
+      "lvimuser/lsp-inlayhints.nvim",
+      "ray-x/lsp_signature.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
 
       -- other
-      { "folke/neodev.nvim" },
+      "folke/neodev.nvim",
     },
   },
 
@@ -82,19 +79,15 @@ p.setup({
     event = { "BufRead Cargo.toml" },
     lazy = true,
   },
+
   {
     'simrat39/rust-tools.nvim',
-    lazy = true,
   },
-  { "lervag/vimtex" },
-
-  -- dap
-  { "mfussenegger/nvim-dap",   lazy = true },
-  { "rcarriga/nvim-dap-ui",    lazy = true },
 
   -- cozy
-  { "folke/zen-mode.nvim",     lazy = true },
+  "folke/zen-mode.nvim",
   { "j-hui/fidget.nvim",       tag = "legacy", lazy = true },
+
   -- {
   --   "iamcco/markdown-preview.nvim",
   --   config = function() vim.fn["mkdp#util#install"]() end,

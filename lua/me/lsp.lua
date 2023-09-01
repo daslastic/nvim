@@ -49,26 +49,17 @@ M.servers = {
   omnisharp = {},
 }
 
-function M.keymaps(bufnr)
+M.keymaps = function(bufnr)
   local opts = { buffer = bufnr, remap = false }
 
   vim.keymap.set("n", "gd", function()
     vim.lsp.buf.definition()
   end, opts)
-  vim.keymap.set("n", "K", function()
-    vim.lsp.buf.hover()
-  end, opts)
-  vim.keymap.set("n", "<leader>as", function()
-    vim.lsp.buf.workspace_symbol()
-  end, opts)
   vim.keymap.set("n", "gl", function()
     vim.diagnostic.open_float()
   end, opts)
-  vim.keymap.set("n", "[d", function()
-    vim.diagnostic.goto_next()
-  end, opts)
-  vim.keymap.set("n", "]d", function()
-    vim.diagnostic.goto_prev()
+  vim.keymap.set("n", "<leader>as", function()
+    vim.lsp.buf.workspace_symbol()
   end, opts)
   vim.keymap.set("n", "<leader>aa", function()
     vim.lsp.buf.code_action()
@@ -79,10 +70,6 @@ function M.keymaps(bufnr)
   vim.keymap.set("n", "<leader>ar", function()
     vim.lsp.buf.rename()
   end, opts)
-  vim.keymap.set("i", "<C-h>", function()
-    vim.lsp.buf.signature_help()
-  end, opts)
-
   vim.keymap.set("n", "<leader>af", function()
     vim.lsp.buf.format({ async = false })
   end, opts)
@@ -92,11 +79,18 @@ function M.keymaps(bufnr)
   vim.keymap.set("n", "<leader>ak", function()
     vim.diagnostic.goto_prev()
   end, opts)
+
+  vim.keymap.set("n", "K", function()
+    vim.lsp.buf.hover()
+    vim.lsp.buf.hover()
+  end, opts)
+  vim.keymap.set("i", "<C-h>", function()
+    vim.lsp.buf.signature_help()
+  end, opts)
 end
 
 M.on_attach = function(_, bufnr)
   M.keymaps(bufnr)
-
   vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
     vim.lsp.buf.format()
   end, { desc = "Format current buffer" })
@@ -133,6 +127,25 @@ mason_ls.setup({
 
 mason_ls.setup_handlers({
   function(server_name)
+    if server_name == "rust_analyzer" then
+      local rt = safe_require("rust-tools")
+      if not rt then
+        return
+      end
+
+      rt.setup({
+        server = {
+          on_attach = function(_, bufnr)
+            M.on_attach(_, bufnr)
+            vim.keymap.set("n", "<leader>aa", rt.code_action_group.code_action_group, { buffer = bufnr, remap = true })
+            vim.keymap.set("n", "<leader>ac", function() rt.open_cargo_toml.open_cargo_toml() end,
+              { buffer = bufnr, remap = true })
+          end,
+        },
+      })
+      return
+    end
+
     lspconfig[server_name].setup({
       capabilities = M.capabilities,
       on_attach = M.on_attach,

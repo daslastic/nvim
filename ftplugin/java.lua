@@ -52,7 +52,7 @@ if vim.fn.has("mac") == 1 then
     root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
 
     on_attach = function(_, bufnr)
-      jdtls.setup_dap({ hotcodereplace = "auto" })
+      -- jdtls.setup_dap({ hotcodereplace = "auto" })
       vim.lsp.codelens.refresh()
 
       vim.keymap.set("n", "<Leader>co", "<cmd>lua require('jdtls').organize_imports()<cr>")
@@ -62,7 +62,7 @@ if vim.fn.has("mac") == 1 then
       vim.keymap.set("n", "<Leader>cT", "<cmd>lua require('jdtls').test_class()<cr>")
       vim.keymap.set("n", "<Leader>cu", "<cmd>JdtUpdateConfig<cr>")
 
-      require("daslastic.lsp").on_attach(_, bufnr)
+      require("me.lsp").on_attach(_, bufnr)
     end,
     capabilities = capabilities,
 

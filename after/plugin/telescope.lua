@@ -1,15 +1,12 @@
-local s = safe_require("telescope")
-if not s then
+local telescope = safe_require "telescope"
+if not telescope then
   return
 end
-s.setup({
+
+telescope.setup({
   defaults = {
-    layout_config = {
-      vertical = { width = 0.5 },
-    },
     prompt_prefix = " ",
     selection_caret = " ",
-    path_display = { "smart" },
     file_ignore_patterns = {
       ".DS_Store",
       ".git/",
@@ -22,9 +19,6 @@ s.setup({
       "%.sqlite3",
       "%.ipynb",
       "node_modules/*",
-      -- "%.jpg",
-      -- "%.jpeg",
-      -- "%.png",
       ".dart_tool/",
       ".github/",
       ".gradle/",
@@ -63,3 +57,31 @@ s.setup({
     },
   },
 })
+
+
+local opts = { previewer = true, hidden = true, no_ignore = true }
+local builtin = require('telescope.builtin')
+local themes = require('telescope.themes');
+
+
+vim.keymap.set("n", "<leader>5", function()
+  vim.cmd('vsplit')
+  vim.cmd('Ex')
+end)
+vim.keymap.set("n", "<leader>'", function()
+  vim.cmd('split')
+  vim.cmd('Ex')
+end)
+
+vim.keymap.set("n", "<leader>%", function()
+  vim.cmd('vsplit')
+  builtin.find_files(themes.get_dropdown(opts))
+end)
+vim.keymap.set("n", '<leader>"', function()
+  vim.cmd('split')
+  builtin.find_files(themes.get_dropdown(opts))
+end)
+
+vim.keymap.set("n", "<leader>F", function() builtin.live_grep(themes.get_dropdown(opts)) end, {})
+
+vim.keymap.set('n', '<leader>f', function() builtin.find_files(themes.get_dropdown(opts)) end, {})
