@@ -1,9 +1,9 @@
-local telescope = safe_require "telescope"
-if not telescope then
+local s = safe_require "telescope"
+if not s then
   return
 end
 
-telescope.setup({
+s.setup({
   defaults = {
     prompt_prefix = " ",
     selection_caret = " ",
@@ -58,11 +58,14 @@ telescope.setup({
   },
 })
 
+local opts = {
+  previewer = true,
+  hidden = true,
+  no_ignore = true,
+}
 
-local opts = { previewer = true, hidden = true, no_ignore = true }
-local builtin = require('telescope.builtin')
-local themes = require('telescope.themes');
-
+local builtin = require 'telescope.builtin'
+local themes = require 'telescope.themes'
 
 vim.keymap.set("n", "<leader>5", function()
   vim.cmd('vsplit')
@@ -75,13 +78,14 @@ end)
 
 vim.keymap.set("n", "<leader>%", function()
   vim.cmd('vsplit')
+  vim.cmd('Ex')
   builtin.find_files(themes.get_dropdown(opts))
 end)
 vim.keymap.set("n", '<leader>"', function()
   vim.cmd('split')
+  vim.cmd('Ex')
   builtin.find_files(themes.get_dropdown(opts))
 end)
 
 vim.keymap.set("n", "<leader>F", function() builtin.live_grep(themes.get_dropdown(opts)) end, {})
-
 vim.keymap.set('n', '<leader>f', function() builtin.find_files(themes.get_dropdown(opts)) end, {})

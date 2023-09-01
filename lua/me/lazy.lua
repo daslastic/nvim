@@ -41,6 +41,7 @@ p.setup({
   "folke/todo-comments.nvim",
   -- "RRethy/vim-illuminate",
   "norcalli/nvim-colorizer.lua",
+  "nvim-lualine/lualine.nvim",
 
   {
     "hrsh7th/nvim-cmp",
