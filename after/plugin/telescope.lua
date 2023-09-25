@@ -10,9 +10,8 @@ s.setup({
     file_ignore_patterns = {
       ".DS_Store",
       ".git/",
-      "lib/",
+      "/.svelte-kit/",
       "target/",
-      "docs/",
       "vendor/*",
       "%.lock",
       "__pycache__/*",

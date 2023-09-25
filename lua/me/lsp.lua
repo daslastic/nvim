@@ -17,7 +17,9 @@ M.capabilities = cmp_nvim.default_capabilities()
 M.servers = {
   awk_ls = {},
   bashls = {},
-  clangd = {},
+  clangd = {
+    cmd = { 'clangd', '--format-style=file' },
+  },
   cmake = {},
   eslint = {},
   golangci_lint_ls = {},
@@ -84,6 +86,7 @@ M.keymaps = function(bufnr)
     vim.lsp.buf.hover()
     vim.lsp.buf.hover()
   end, opts)
+
   vim.keymap.set("i", "<C-h>", function()
     vim.lsp.buf.signature_help()
   end, opts)
@@ -132,6 +135,12 @@ mason_ls.setup_handlers({
       if not rt then
         return
       end
+
+      local cr = safe_require("crates")
+      if not cr then
+        return
+      end
+      cr.setup()
 
       rt.setup({
         server = {

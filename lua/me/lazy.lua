@@ -65,7 +65,7 @@ p.setup({
       "saadparwaiz1/cmp_luasnip",
       "lvimuser/lsp-inlayhints.nvim",
       "ray-x/lsp_signature.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
+      -- "jose-elias-alvarez/null-ls.nvim",
 
       -- other
       "folke/neodev.nvim",
@@ -87,6 +87,7 @@ p.setup({
 
   -- cozy
   "folke/zen-mode.nvim",
+  "lervag/vimtex",
   { "j-hui/fidget.nvim",       tag = "legacy", lazy = true },
 
   -- {

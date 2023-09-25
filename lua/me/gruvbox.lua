@@ -19,7 +19,7 @@ s.setup({
   invert_tabline = false,
   invert_intend_guides = false,
   inverse = false, -- invert background for search, diffs, statuslines and errors
-  contrast = "dark",
+  contrast = "soft",
   palette_overrides = {},
   overrides = {},
   dim_inactive = false,

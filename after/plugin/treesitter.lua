@@ -3,6 +3,15 @@ if not s then
   return
 end
 
+local filetypes = {
+  'html', 'htmldjango', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx',
+  'rescript',
+  'xml',
+  'php',
+  'markdown',
+  'astro', 'glimmer', 'handlebars', 'hbs'
+}
+
 s.setup({
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript" },
@@ -31,6 +40,7 @@ s.setup({
     enable_rename = true,
     enable_close = true,
     enable_close_on_slash = true,
+    filetypes = filetypes,
   },
   context_commentstring = {
     enable = true,
