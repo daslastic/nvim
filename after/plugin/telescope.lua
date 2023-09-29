@@ -60,7 +60,7 @@ s.setup({
 local opts = {
   previewer = true,
   hidden = true,
-  no_ignore = true,
+  no_ignore = false, -- omg
 }
 
 local builtin = require 'telescope.builtin'
