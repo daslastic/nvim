@@ -62,7 +62,6 @@ p.setup({
       "hrsh7th/cmp-emoji",
       "L3MON4D3/LuaSnip",
       "mtoohey31/cmp-fish",
-      "andersevenrud/cmp-tmux",
       "rafamadriz/friendly-snippets",
       "saadparwaiz1/cmp_luasnip",
       "lvimuser/lsp-inlayhints.nvim",
@@ -89,6 +88,7 @@ p.setup({
   -- },
 
   -- cozy
+  "aserowy/tmux.nvim",
   "folke/zen-mode.nvim",
   "lervag/vimtex",
   { "j-hui/fidget.nvim",       tag = "legacy", lazy = true },
