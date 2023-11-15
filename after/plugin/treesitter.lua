@@ -14,7 +14,7 @@ local filetypes = {
 
 s.setup({
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript" },
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript", "scss" },
   ignore_install = {},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)

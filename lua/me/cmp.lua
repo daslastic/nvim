@@ -53,7 +53,7 @@ cmp.setup({
         vsnip = "Snippet",
         luasnip = "Snippet",
         buffer = "Buffer",
-        treesitter = "Treesitter",
+        fish = "Fish",
       })[entry.source.name]
       return vim_item
     end,
@@ -62,7 +62,7 @@ cmp.setup({
     { name = "buffer" },
     { name = "path" },
     { name = "emoji" },
-    { name = "treesitter" },
+    { name = "fish" },
     -- { name = "crates" }, -- check autocommands
     { name = "nvim_lsp" },
     { name = "luasnip" },

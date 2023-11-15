@@ -24,7 +24,7 @@ p.setup({
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "nvim-treesitter/nvim-treesitter-context",
+      -- "nvim-treesitter/nvim-treesitter-context",
     },
     build = ":TSUpdate",
   },
@@ -36,7 +36,6 @@ p.setup({
   -- editor
   "ellisonleao/gruvbox.nvim",
   "nvim-telescope/telescope.nvim",
-  "aserowy/tmux.nvim",
   "mbbill/undotree",
   "folke/todo-comments.nvim",
   -- "RRethy/vim-illuminate",
@@ -59,8 +58,11 @@ p.setup({
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
+      "hrsh7th/cmp-vsnip",
       "hrsh7th/cmp-emoji",
       "L3MON4D3/LuaSnip",
+      "mtoohey31/cmp-fish",
+      "andersevenrud/cmp-tmux",
       "rafamadriz/friendly-snippets",
       "saadparwaiz1/cmp_luasnip",
       "lvimuser/lsp-inlayhints.nvim",
@@ -69,6 +71,7 @@ p.setup({
 
       -- other
       "folke/neodev.nvim",
+      "nvimtools/none-ls.nvim",
     },
   },
 
@@ -81,9 +84,9 @@ p.setup({
     lazy = true,
   },
 
-  {
-    'simrat39/rust-tools.nvim',
-  },
+  -- {
+  --   'simrat39/rust-tools.nvim',
+  -- },
 
   -- cozy
   "folke/zen-mode.nvim",

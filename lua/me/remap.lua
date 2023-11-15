@@ -1,9 +1,16 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>x", ":qa!<cr>")
+vim.keymap.set("n", "<leader>x", "<cmd>qa!<cr>")
+vim.keymap.set("n", "<leader>R", "<cmd>!chmod +x %<cr>", { silent = true })
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
+vim.keymap.set("n", "<leader>5", function()
+  vim.cmd('vsplit')
+end)
+vim.keymap.set("n", "<leader>'", function()
+  vim.cmd('split')
+end)
 
 -- patchy
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")

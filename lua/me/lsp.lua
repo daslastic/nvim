@@ -130,36 +130,19 @@ mason_ls.setup({
 
 mason_ls.setup_handlers({
   function(server_name)
-    if server_name == "rust_analyzer" then
-      local rt = safe_require("rust-tools")
-      if not rt then
-        return
-      end
-
-      local cr = safe_require("crates")
-      if not cr then
-        return
-      end
-      cr.setup()
-
-      rt.setup({
-        server = {
-          on_attach = function(_, bufnr)
-            M.on_attach(_, bufnr)
-            vim.keymap.set("n", "<leader>aa", rt.code_action_group.code_action_group, { buffer = bufnr, remap = true })
-            vim.keymap.set("n", "<leader>ac", function() rt.open_cargo_toml.open_cargo_toml() end,
-              { buffer = bufnr, remap = true })
-          end,
-        },
-      })
-      return
-    end
-
     lspconfig[server_name].setup({
       capabilities = M.capabilities,
       on_attach = M.on_attach,
       settings = M.servers[server_name],
     })
+
+    if server_name == "rust_analyzer" then
+      local cr = safe_require("crates")
+      if not cr then
+        return
+      end
+      cr.setup()
+    end
   end,
 })
 

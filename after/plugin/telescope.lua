@@ -66,23 +66,12 @@ local opts = {
 local builtin = require 'telescope.builtin'
 local themes = require 'telescope.themes'
 
-vim.keymap.set("n", "<leader>5", function()
-  vim.cmd('vsplit')
-  vim.cmd('Ex')
-end)
-vim.keymap.set("n", "<leader>'", function()
-  vim.cmd('split')
-  vim.cmd('Ex')
-end)
-
 vim.keymap.set("n", "<leader>%", function()
   vim.cmd('vsplit')
-  vim.cmd('Ex')
   builtin.find_files(themes.get_dropdown(opts))
 end)
 vim.keymap.set("n", '<leader>"', function()
   vim.cmd('split')
-  vim.cmd('Ex')
   builtin.find_files(themes.get_dropdown(opts))
 end)
 
