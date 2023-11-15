@@ -91,7 +91,7 @@ p.setup({
   "aserowy/tmux.nvim",
   "folke/zen-mode.nvim",
   "lervag/vimtex",
-  { "j-hui/fidget.nvim",       tag = "legacy", lazy = true },
+  { "j-hui/fidget.nvim",       lazy = true },
 
   -- {
   --   "iamcco/markdown-preview.nvim",
