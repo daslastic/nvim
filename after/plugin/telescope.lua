@@ -3,8 +3,18 @@ if not s then
   return
 end
 
+local builtin = require 'telescope.builtin'
+local themes = require 'telescope.themes'
+local actions = require 'telescope.actions'
+
 s.setup({
   defaults = {
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+      },
+    },
     prompt_prefix = " ",
     selection_caret = " ",
     file_ignore_patterns = {
@@ -62,9 +72,6 @@ local opts = {
   hidden = true,
   no_ignore = false, -- omg
 }
-
-local builtin = require 'telescope.builtin'
-local themes = require 'telescope.themes'
 
 vim.keymap.set("n", "<leader>%", function()
   vim.cmd('vsplit')
