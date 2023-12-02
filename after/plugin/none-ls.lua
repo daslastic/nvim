@@ -1,4 +1,4 @@
-local none_ls = safe_require("null-ls")
+local none_ls = safe_require "null-ls"
 if not none_ls then
   return
 end

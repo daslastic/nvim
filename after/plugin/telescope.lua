@@ -70,15 +70,17 @@ s.setup({
 local opts = {
   previewer = true,
   hidden = true,
-  no_ignore = false, -- omg
+  no_ignore = false,
 }
 
 vim.keymap.set("n", "<leader>%", function()
   vim.cmd('vsplit')
+  vim.cmd('Ex')
   builtin.find_files(themes.get_dropdown(opts))
 end)
 vim.keymap.set("n", '<leader>"', function()
   vim.cmd('split')
+  vim.cmd('Ex')
   builtin.find_files(themes.get_dropdown(opts))
 end)
 

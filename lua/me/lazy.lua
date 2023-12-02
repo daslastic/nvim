@@ -75,7 +75,7 @@ p.setup({
   },
 
   -- server
-  { "mfussenegger/nvim-jdtls", lazy = true },
+  { "mfussenegger/nvim-jdtls" },
   {
     "saecki/crates.nvim",
     tag = 'v0.3.0',
@@ -83,15 +83,27 @@ p.setup({
     lazy = true,
   },
 
-  -- {
-  --   'simrat39/rust-tools.nvim',
-  -- },
-
   -- cozy
-  "aserowy/tmux.nvim",
+  {
+    'alexghergh/nvim-tmux-navigation',
+    config = function()
+      require 'nvim-tmux-navigation'.setup {
+        disable_when_zoomed = true, -- defaults to false
+        keybindings = {
+          left = "<C-h>",
+          down = "<C-j>",
+          up = "<C-k>",
+          right = "<C-l>",
+          last_active = "<C-\\>",
+          next = "<C-Space>",
+        }
+      }
+    end
+  },
+
   "folke/zen-mode.nvim",
   "lervag/vimtex",
-  { "j-hui/fidget.nvim",       lazy = true },
+  { "j-hui/fidget.nvim",      lazy = true },
 
   -- {
   --   "iamcco/markdown-preview.nvim",
