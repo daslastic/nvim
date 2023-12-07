@@ -16,6 +16,8 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-n>"] = cmp.mapping.select_next_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -63,7 +65,7 @@ cmp.setup({
     { name = "path" },
     { name = "emoji" },
     { name = "fish" },
-    -- { name = "crates" }, -- check autocommands
+    { name = "crates" }, -- check autocommands
     { name = "nvim_lsp" },
     { name = "luasnip" },
   }),

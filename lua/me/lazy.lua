@@ -22,6 +22,7 @@ p.setup({
 
   {
     "nvim-treesitter/nvim-treesitter",
+    "nvim-ts-context-commentstring",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       -- "nvim-treesitter/nvim-treesitter-context",
@@ -38,7 +39,6 @@ p.setup({
   "nvim-telescope/telescope.nvim",
   "mbbill/undotree",
   "folke/todo-comments.nvim",
-  -- "RRethy/vim-illuminate",
   "norcalli/nvim-colorizer.lua",
   "nvim-lualine/lualine.nvim",
 
@@ -66,7 +66,6 @@ p.setup({
       "saadparwaiz1/cmp_luasnip",
       "lvimuser/lsp-inlayhints.nvim",
       "ray-x/lsp_signature.nvim",
-      -- "jose-elias-alvarez/null-ls.nvim",
 
       -- other
       "folke/neodev.nvim",
@@ -75,11 +74,9 @@ p.setup({
   },
 
   -- server
-  { "mfussenegger/nvim-jdtls" },
   {
     "saecki/crates.nvim",
     tag = 'v0.3.0',
-    event = { "BufRead Cargo.toml" },
     lazy = true,
   },
 
@@ -102,8 +99,8 @@ p.setup({
   },
 
   "folke/zen-mode.nvim",
-  "lervag/vimtex",
-  { "j-hui/fidget.nvim",      lazy = true },
+  { "j-hui/fidget.nvim", lazy = true },
+  -- "lervag/vimtex",
 
   -- {
   --   "iamcco/markdown-preview.nvim",
