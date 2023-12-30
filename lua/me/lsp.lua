@@ -15,7 +15,7 @@ local M = {}
 
 M.capabilities = cmp_nvim.default_capabilities()
 M.servers = {
-  awk_ls = {},
+  -- awk_ls = {},
   bashls = {},
   clangd = {
     cmd = { 'clangd', '--format-style=file' },

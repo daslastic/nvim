@@ -20,7 +20,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "<S-h>", "<gv")
 vim.keymap.set("v", "<S-l>", ">gv")
 vim.keymap.set("x", "<leader>p", [["_dP]]) -- paste without yank
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]) -- delete without yank
 
 -- center
 vim.keymap.set("n", "J", "mzJ`z")
