@@ -46,7 +46,7 @@ local options = {
   incsearch = true,
 }
 
-vim.g.netrw_list_hide = '.DS_Store'
+vim.g.netrw_list_hide = '.DS_Store,.*.o$'
 
 for k, v in pairs(options) do
   vim.opt[k] = v

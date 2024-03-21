@@ -24,6 +24,7 @@ s.setup({
       "target/",
       "vendor/*",
       "%.lock",
+      "%.o",
       "__pycache__/*",
       "%.sqlite3",
       "%.ipynb",

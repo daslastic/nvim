@@ -18,7 +18,18 @@ M.servers = {
   -- awk_ls = {},
   bashls = {},
   clangd = {
-    cmd = { 'clangd', '--format-style=file' },
+    cmd = { "clangd",
+      "--background-index",
+      "--pch-storage=memory",
+      "--all-scopes-completion",
+      "--pretty",
+      "--header-insertion=never",
+      "-j=4",
+      "--inlay-hints",
+      "--header-insertion-decorators",
+      "--function-arg-placeholders",
+      "--completion-style=detailed",
+    },
   },
   cmake = {},
   golangci_lint_ls = {},
@@ -38,12 +49,13 @@ M.servers = {
   svelte = {},
   emmet_ls = {},
   cssls = {},
-  jdtls = {},
   cssmodules_ls = {},
-  -- omnisharp = {},
+  omnisharp = {},
+  wgsl_analyzer = {},
+  taplo = {},
   -- vuels = {},
   -- tflint = {},
-  -- zls = {},
+  zls = {},
   -- tailwindcss = {},
   -- eslint = {},
   -- julials = {},
@@ -92,6 +104,13 @@ M.keymaps = function(bufnr)
     vim.lsp.buf.signature_help()
   end, opts)
 end
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.wgsl",
+  callback = function()
+    vim.bo.filetype = "wgsl"
+  end,
+})
 
 M.on_attach = function(_, bufnr)
   M.keymaps(bufnr)
