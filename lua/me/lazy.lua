@@ -102,7 +102,7 @@ p.setup({
 
   "folke/zen-mode.nvim",
   { "j-hui/fidget.nvim", lazy = true },
-  "lervag/vimtex",
+  -- "lervag/vimtex",
 
   -- {
   --   "iamcco/markdown-preview.nvim",

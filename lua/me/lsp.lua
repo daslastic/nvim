@@ -15,7 +15,6 @@ local M = {}
 
 M.capabilities = cmp_nvim.default_capabilities()
 M.servers = {
-  -- awk_ls = {},
   bashls = {},
   clangd = {
     cmd = { "clangd",
@@ -50,18 +49,11 @@ M.servers = {
   emmet_ls = {},
   cssls = {},
   cssmodules_ls = {},
-  omnisharp = {},
+  omnisharp = {
+  },
   wgsl_analyzer = {},
   taplo = {},
-  -- vuels = {},
-  -- tflint = {},
   zls = {},
-  -- tailwindcss = {},
-  -- eslint = {},
-  -- julials = {},
-  -- intelephense = {},
-  -- taplo = {},
-  -- terraformls = {},
 }
 
 M.keymaps = function(bufnr)

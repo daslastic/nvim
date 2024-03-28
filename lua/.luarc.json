@@ -5,5 +5,8 @@
         "/Users/shalev/.local/share/nvim/lazy/nvim-dap-ui/lua",
         "/Users/shalev/.config/nvim/lua",
         "${3rd}/luv/library"
+    ],
+    "diagnostics.disable": [
+        "duplicate-set-field"
     ]
 }
