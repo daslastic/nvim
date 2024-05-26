@@ -4,7 +4,7 @@ return {
     config = function()
       require("gruvbox").setup({
         undercurl = false,
-        underline = false,
+        underline = true,
         overrides = {
           SignColumn = { bg = "#32302f" },
           LineNr = { bg = "#32302f" }

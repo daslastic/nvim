@@ -10,6 +10,10 @@ return {
       { "j-hui/fidget.nvim", opts = {} },
     },
     config = function()
+      require("neodev").setup()
+      local cmp_nvim = require("cmp_nvim_lsp")
+      local lspconfig = require("lspconfig")
+
       vim.diagnostic.config {
         signs = {
           text = {
@@ -19,23 +23,10 @@ return {
             [vim.diagnostic.severity.INFO] = "",
           },
         },
-        virtual_text = false,
-        update_in_insert = false,
-        underline = true,
-        severity_sort = true,
         float = {
-          focusable = true,
-          style = "minimal",
-          border = "rounded",
-          header = "",
-          prefix = "",
+          border = "none",
         },
       }
-
-      require("neodev").setup()
-
-      local cmp_nvim = require("cmp_nvim_lsp")
-      local lspconfig = require("lspconfig")
 
       local M = {}
 
@@ -98,7 +89,7 @@ return {
         end, opts)
       end
 
-      M.on_attach = function(client, bufnr)
+      M.on_attach = function(_, bufnr)
         vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
 
         M.keymaps(bufnr)

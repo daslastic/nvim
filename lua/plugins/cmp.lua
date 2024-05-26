@@ -19,10 +19,10 @@ return {
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
+      local lspkind = require('lspkind')
 
       require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_lua").lazy_load()
-      local lspkind = require('lspkind')
 
       cmp.setup({
         snippet = {
@@ -36,6 +36,10 @@ return {
             maxwidth = 20,
             ellipsis_char = '...',
             show_labelDetails = false,
+
+            before = function(entry, vim_item)
+              return vim_item
+            end
           })
         },
         mapping = cmp.mapping.preset.insert({
@@ -70,9 +74,9 @@ return {
         sources = cmp.config.sources({
           { name = "buffer" },
           { name = "path" },
+          -- yes it says its not needed, but cap
           { name = "nvim_lsp" },
           { name = "luasnip" },
-          { name = "otter" },
         }),
       })
     end,
