@@ -19,6 +19,9 @@ if not status_ok then
   return
 end
 
+require "me.remap"
+require "me.opt"
+
 lazy.setup(
   {
     spec = {
@@ -29,5 +32,9 @@ lazy.setup(
       notify = false,
     },
   },
-  {}
+  {
+    change_detection = {
+      notify = false,
+    },
+  }
 )

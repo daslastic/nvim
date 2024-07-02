@@ -5,12 +5,8 @@ return {
       require("gruvbox").setup({
         undercurl = false,
         underline = true,
-        overrides = {
-          SignColumn = { bg = "#32302f" },
-          LineNr = { bg = "#32302f" }
-        },
         contrast = "hard",
-        transparent_mode = false,
+        transparent_mode = true,
       })
 
       vim.cmd.colorscheme("gruvbox")

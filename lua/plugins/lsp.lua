@@ -7,7 +7,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "ray-x/lsp_signature.nvim",
       "saecki/crates.nvim",
-      { "j-hui/fidget.nvim", opts = {} },
+      -- { "j-hui/fidget.nvim", opts = {} },
     },
     config = function()
       require("neodev").setup()
@@ -148,14 +148,6 @@ return {
       lspconfig.html.setup {
         capabilities = M.capabilities,
         on_attach = M.on_attach,
-        init_options = {
-          configurationSection = { "html", "htmldjango", "css", "javascript" },
-          embeddedLanguages = {
-            css = true,
-            javascript = true
-          },
-          provideFormatter = true
-        },
       }
 
       lspconfig.cssls.setup {

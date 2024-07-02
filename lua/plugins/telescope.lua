@@ -5,12 +5,12 @@ return {
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      local s = require("telescope")
+      local ts = require "telescope"
       local builtin = require 'telescope.builtin'
       local themes = require 'telescope.themes'
       local actions = require 'telescope.actions'
 
-      s.setup({
+      ts.setup({
         defaults = {
           mappings = {
             i = {
@@ -25,6 +25,7 @@ return {
             "target",
             ".git",
             ".cache",
+            "%.ase",
             -- vscode users
             ".vscode",
           },

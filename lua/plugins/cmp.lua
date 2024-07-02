@@ -11,7 +11,6 @@ return {
       {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
-        build = "make install_jsregexp",
         dependencies = { "rafamadriz/friendly-snippets" },
       },
       "onsails/lspkind.nvim",
@@ -37,7 +36,7 @@ return {
             ellipsis_char = '...',
             show_labelDetails = false,
 
-            before = function(entry, vim_item)
+            before = function(_, vim_item)
               return vim_item
             end
           })
@@ -72,11 +71,11 @@ return {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
-          { name = "buffer" },
+          { name = "luasnip" },
+          { name = "nvim_lsp" },
           { name = "path" },
           -- yes it says its not needed, but cap
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
+          { name = "buffer" },
         }),
       })
     end,
