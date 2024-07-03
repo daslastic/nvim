@@ -1,4 +1,6 @@
-vim.loader.enable()
+if vim.loader then
+  vim.loader.enable()
+end
 
 local options = {
   backup = false,
@@ -15,7 +17,7 @@ local options = {
   showtabline = 0,
   smartcase = true,
   smartindent = false,
-  inccommand = "split";
+  inccommand = "split",
   splitbelow = true,
   splitright = true,
   swapfile = false,
@@ -44,7 +46,7 @@ local options = {
   incsearch = true,
 }
 
-vim.g.netrw_list_hide = '.DS_Store,.*.o$'
+vim.g.netrw_list_hide = ".DS_Store,.*.o$"
 
 for k, v in pairs(options) do
   vim.opt[k] = v

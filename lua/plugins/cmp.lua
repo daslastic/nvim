@@ -2,7 +2,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     lazy = false,
-    priority = 100,
+    -- priority = 100,
     dependencies = {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
@@ -11,14 +11,13 @@ return {
       {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
-        dependencies = { "rafamadriz/friendly-snippets" },
       },
       "onsails/lspkind.nvim",
     },
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      local lspkind = require('lspkind')
+      local lspkind = require("lspkind")
 
       require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_lua").lazy_load()
@@ -31,19 +30,19 @@ return {
         },
         formatting = {
           format = lspkind.cmp_format({
-            mode = 'text_symbol',
+            mode = "text_symbol",
             maxwidth = 20,
-            ellipsis_char = '...',
+            ellipsis_char = "...",
             show_labelDetails = false,
 
             before = function(_, vim_item)
               return vim_item
-            end
-          })
+            end,
+          }),
         },
         mapping = cmp.mapping.preset.insert({
-          ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-          ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+          ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
           ["<C-d>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete({}),
@@ -74,7 +73,7 @@ return {
           { name = "luasnip" },
           { name = "nvim_lsp" },
           { name = "path" },
-          -- yes it says its not needed, but cap
+          -- yes cmp says its not needed, but cap
           { name = "buffer" },
         }),
       })

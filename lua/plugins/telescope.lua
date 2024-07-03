@@ -4,54 +4,48 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    config = function()
-      local ts = require "telescope"
-      local builtin = require 'telescope.builtin'
-      local themes = require 'telescope.themes'
-      local actions = require 'telescope.actions'
-
-      ts.setup({
-        defaults = {
-          mappings = {
-            i = {
-              ["<C-j>"] = actions.move_selection_next,
-              ["<C-k>"] = actions.move_selection_previous,
-            },
-          },
-          prompt_prefix = " ",
-          selection_caret = " ",
-          file_ignore_patterns = {
-            ".direnv",
-            "target",
-            ".git",
-            ".cache",
-            "%.ase",
-            -- vscode users
-            ".vscode",
+    opts = {
+      defaults = {
+        mappings = {
+          i = {
+            ["<C-j>"] = require("telescope.actions").move_selection_next,
+            ["<C-k>"] = require("telescope.actions").move_selection_previous,
           },
         },
-      })
-
-      local opts = {
-        previewer = true,
-        hidden = true,
-        no_ignore = false,
-      }
-
-      vim.keymap.set("n", "<leader>%", function()
-        vim.cmd('vsplit')
-        vim.cmd('Ex')
-        builtin.find_files(themes.get_dropdown(opts))
-      end)
-
-      vim.keymap.set("n", '<leader>"', function()
-        vim.cmd('split')
-        vim.cmd('Ex')
-        builtin.find_files(themes.get_dropdown(opts))
-      end)
-
-      vim.keymap.set("n", "<leader>F", function() builtin.live_grep(themes.get_dropdown(opts)) end, {})
-      vim.keymap.set('n', '<leader>f', function() builtin.find_files(themes.get_dropdown(opts)) end, {})
-    end,
+        prompt_prefix = " ",
+        selection_caret = " ",
+        file_ignore_patterns = {
+          ".direnv",
+          "target",
+          ".git",
+          ".cache",
+          "%.ase",
+          -- vscode users
+          ".vscode",
+        },
+      },
+    },
+    keys = {
+      {
+        '<leader>%',
+        '<cmd>lua require("global.telescope").split()<cr>',
+        desc = "",
+      },
+      {
+        '<leader>"',
+        '<cmd>lua require("global.telescope").vsplit()<cr>',
+        desc = "",
+      },
+      {
+        '<leader>F',
+        '<cmd>lua require("global.telescope").grep()<cr>',
+        desc = "",
+      },
+      {
+        '<leader>f',
+        '<cmd>lua require("global.telescope").find()<cr>',
+        desc = "",
+      },
+    },
   },
 }

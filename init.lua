@@ -19,14 +19,15 @@ if not status_ok then
   return
 end
 
-require "me.remap"
-require "me.opt"
+require "global.remap"
+require "global.opt"
 
 lazy.setup(
   {
     spec = {
       { import = "plugins" },
-      { import = "conf" }
+      { import = "lsp" },
+      { import = "appearance" }
     },
     change_detection = {
       notify = false,
