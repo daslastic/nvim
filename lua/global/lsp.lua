@@ -75,14 +75,6 @@ M.on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
     M.format(bufnr)
   end, { desc = "Format current buffer" })
-
-  require("lsp_signature").on_attach({
-    bind = true,
-    floating_window_above_cur_line = true,
-    handler_opts = {
-      border = "none",
-    },
-  }, bufnr)
 end
 
 return M

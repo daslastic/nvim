@@ -9,7 +9,7 @@ return {
           signcolumn = "no",
           number = false,
           relativenumber = false,
-          cursorline = true,
+          cursorline = false,
           cursorcolumn = false,
         },
       },

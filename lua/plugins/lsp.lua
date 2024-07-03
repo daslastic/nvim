@@ -1,15 +1,34 @@
 return {
   {
+    "windwp/nvim-ts-autotag",
+  },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {
+      bind = true,
+      floating_window_above_cur_line = true,
+      handler_opts = {
+        border = "none",
+      },
+    },
+    config = function(_, opts)
+      require 'lsp_signature'.setup(opts)
+    end,
+  },
+  { "j-hui/fidget.nvim", opts = {} },
+  {
     "neovim/nvim-lspconfig",
-    name = "lspconfig",
     dependencies = {
-      "ray-x/lsp_signature.nvim",
       "folke/neodev.nvim",
       "hrsh7th/cmp-nvim-lsp",
-      "ray-x/lsp_signature.nvim",
       "mfussenegger/nvim-lint",
       "stevearc/conform.nvim",
-      -- { "j-hui/fidget.nvim", opts = {} },
     },
     opts = {
       lua_ls = {
@@ -57,7 +76,7 @@ return {
       require("lint").linters_by_ft = {
         ["*"] = { "editorconfig-checker" },
         markdown = { "vale" },
-        nix = { "statix", "deadnix" },
+        nix = { "statix" },
         python = { "ruff", "mypy" },
         sh = { "shellcheck" },
       }

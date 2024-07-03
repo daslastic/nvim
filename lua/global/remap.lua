@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>x", "<cmd>qa!<cr>")
+vim.keymap.set("n", "<leader>q", "<cmd>qa!<cr>")
 vim.keymap.set("n", "<leader>R", "<cmd>!chmod +x %<cr>", { silent = true })
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
