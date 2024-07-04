@@ -75,7 +75,6 @@ return {
 
       require("lint").linters_by_ft = {
         ["*"] = { "editorconfig-checker" },
-        markdown = { "vale" },
         nix = { "statix" },
         python = { "ruff", "mypy" },
         sh = { "shellcheck" },
@@ -136,7 +135,8 @@ return {
         settings = {},
       })
 
-      require("lspconfig").rust_analyzer.setup({
+      lspconfig.marksman.setup {}
+      lspconfig.rust_analyzer.setup({
         capabilities = lsp.capabilities,
         on_attach = function(client, bufnr)
           lsp.on_attach(client, bufnr)
