@@ -6,12 +6,6 @@ return {
     },
     opts = {
       defaults = {
-        mappings = {
-          i = {
-            ["<C-j>"] = require("telescope.actions").move_selection_next,
-            ["<C-k>"] = require("telescope.actions").move_selection_previous,
-          },
-        },
         prompt_prefix = " ",
         selection_caret = " ",
         file_ignore_patterns = {
