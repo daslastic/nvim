@@ -135,6 +135,12 @@ return {
         settings = {},
       })
 
+      lspconfig.zls.setup({
+        capabilities = lsp.capabilities,
+        on_attach = lsp.on_attach,
+        settings = {},
+      })
+
       lspconfig.marksman.setup {}
       lspconfig.rust_analyzer.setup({
         capabilities = lsp.capabilities,
