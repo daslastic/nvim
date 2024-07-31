@@ -22,12 +22,12 @@ return {
     keys = {
       {
         '<leader>%',
-        '<cmd>lua require("global.telescope").split()<cr>',
+        '<cmd>lua require("global.telescope").vsplit()<cr>',
         desc = "",
       },
       {
         '<leader>"',
-        '<cmd>lua require("global.telescope").vsplit()<cr>',
+        '<cmd>lua require("global.telescope").split()<cr>',
         desc = "",
       },
       {
